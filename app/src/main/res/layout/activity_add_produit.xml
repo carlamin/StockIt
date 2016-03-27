@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Ajout Produit"
+        android:id="@+id/textView_AjoutProduit"
+        android:textSize="35dp" />
+
+    <TextView
+        android:layout_width="317dp"
+        android:layout_height="56dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Nom"
+        android:id="@+id/textView_NomProduit"
+        android:textSize="35dp" />
+
+    <EditText
+        android:layout_width="363dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText_NomProduit"
+        android:layout_weight="0.03" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/fabAjoutProduit"
+        android:layout_gravity="center_horizontal"
+        android:src="@android:drawable/ic_input_add" />
+
+</LinearLayout>

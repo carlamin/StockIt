@@ -6,16 +6,20 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
+private ListView listViewProduits;
+    private ArrayAdapter<String> adapter;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -26,19 +30,13 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addIntent = new Intent(MainActivity.this, AddActivity.class);
+                Intent addIntent = new Intent(MainActivity.this, AddProduitActivity.class);
                 startActivity(addIntent);
             }
         });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
+        adapter = new ArrayAdapter<String>(this,R.layout.listview_produits);
+        listViewProduits.setAdapter(adapter);
     }
 
     @Override
@@ -66,7 +64,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_clear) {
+            List<String> produitList = ((MyApplication) getApplication()).getStorageService().clear(this);
+            updateAdapter(produitList);
             return true;
         }
 
@@ -96,5 +96,15 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    protected void onResume() {
+        super.onResume();
+        List<String> produitList = ((MyApplication) getApplication()).getStorageService().restore(this);
+        updateAdapter(produitList);
+    }
+    protected void updateAdapter(List<String> produitList){
+        adapter.clear();
+        adapter.addAll(produitList);
+        adapter.notifyDataSetChanged();
     }
 }
