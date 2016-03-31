@@ -15,15 +15,18 @@ public class AddProduitActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_produit);
 
-        final EditText editText = (EditText) findViewById(R.id.editText_NomProduit);
+        final EditText editTextNomProduit = (EditText) findViewById(R.id.input_nomProduit);
+        final EditText editTextQtiteProduit = (EditText) findViewById(R.id.input_quantiteProduit);
         FloatingActionButton fabAP = (FloatingActionButton) findViewById(R.id.fabAjoutProduit);
+
+
         fabAP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText.getText().toString().trim().isEmpty()) {
+                if (editTextNomProduit.getText().toString().trim().isEmpty()&&editTextQtiteProduit.getText().toString().trim().isEmpty()) {
                     Toast.makeText(AddProduitActivity.this, R.string.mandatory_message, Toast.LENGTH_LONG).show();
                 } else {
-                    ((MyApplication) getApplication()).getStorageService().add(AddProduitActivity.this, editText.getText().toString().trim());
+                    ((MyApplication) getApplication()).getStorageService().add(AddProduitActivity.this, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduit.getText().toString() ));
                     AddProduitActivity.this.finish();
                 }
 

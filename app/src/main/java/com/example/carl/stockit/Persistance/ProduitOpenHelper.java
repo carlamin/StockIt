@@ -12,7 +12,9 @@ public static final String DATABASE_NAME = "PRODUIT_DB";
     public static final int DATABASE_VERSION = 1;
     public static final String PRODUIT_TABLE_NAME = "produits";
     public static final String PRODUIT_COL_NAME = "name";
-    private static final String TABLES_CREATE = "CREATE TABLE " + PRODUIT_TABLE_NAME + " (" + PRODUIT_COL_NAME +" TEXT);";
+    public static final String PRODUIT_COL_QTITE = "quantite";
+
+    private static final String TABLES_CREATE = "CREATE TABLE " + PRODUIT_TABLE_NAME + " (" + PRODUIT_COL_NAME +" TEXT,"+PRODUIT_COL_QTITE+"INTEGER);";
     public ProduitOpenHelper(Context context) {
         super(context, DATABASE_NAME, null , DATABASE_VERSION);
     }

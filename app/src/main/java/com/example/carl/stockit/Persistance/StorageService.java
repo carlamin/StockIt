@@ -14,26 +14,26 @@ public interface StorageService {
      * @param articles liste des articles
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<String> store(Context context, List<String> articles);
+    public List<?> store(Context context, List<String> articles);
 
     /**
      * Récupère la liste des articles sauvegardés.
      * @param context contexte de l'activité
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<String> restore(Context context);
+    public List<?> restore(Context context);
 
     /**
      * Vide la liste des articles.
      * @param context contexte de l'activité
      * @return liste des articles vide.
      */
-    public List<String> clear(Context context);
+    public List<?> clear(Context context);
 
     /**
      * Enregistre un nouvel article passé en paramètre.
      * @param context contexte de l'activité
      * @param article article
      */
-    public void add(Context context, String article);
+    public void add(Context context, String article,int qtite);
 }

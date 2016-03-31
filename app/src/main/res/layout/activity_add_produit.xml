@@ -1,37 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:weightSum="1"
-    android:orientation="vertical">
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@android:color/darker_gray">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+        <TextView
+            android:layout_width="313dp"
+            android:layout_height="89dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/ajout_produit"
+            android:id="@+id/textView_AjoutProduit"
+            android:textSize="35sp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_column="0"
+            android:layout_columnSpan="7"
+            android:layout_row="0" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Ajout Produit"
-        android:id="@+id/textView_AjoutProduit"
-        android:textSize="35dp" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
-    <TextView
-        android:layout_width="317dp"
-        android:layout_height="56dp"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Nom"
-        android:id="@+id/textView_NomProduit"
-        android:textSize="35dp" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fabAjoutProduit"
+            android:layout_gravity="center_horizontal"
+            android:src="@android:drawable/ic_input_add"
+            android:layout_column="5"
+            android:layout_row="16"
+            android:layout_width="103dp"
+            android:layout_height="88dp"
+            android:layout_centerVertical="true"
+            android:layout_alignRight="@+id/textView_AjoutProduit"
+            android:layout_alignEnd="@+id/textView_AjoutProduit"
+            android:layout_x="230dp"
+            android:layout_y="328dp"
+            android:background="@android:color/holo_green_dark"
+            app:backgroundTint="@android:color/holo_green_dark" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
     <EditText
-        android:layout_width="363dp"
+        android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:id="@+id/editText_NomProduit"
-        android:layout_weight="0.03" />
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/input_quantiteProduit"
+        android:layout_x="65dp"
+        android:layout_y="145dp"
+        android:hint="Quantité" />
+
+    <EditText android:id="@+id/input_nomProduit"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:hint="Nom Produit"
+        android:layout_x="62dp"
+        android:layout_y="97dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/fabAjoutProduit"
-        android:layout_gravity="center_horizontal"
-        android:src="@android:drawable/ic_input_add" />
+        android:layout_width="87dp"
+        android:layout_height="76dp"
+        android:id="@+id/view"
+        android:layout_x="76dp"
+        android:layout_y="338dp"
+        app:backgroundTint="@android:color/holo_red_dark"
+        android:src="@android:drawable/ic_delete"
+        android:background="@android:color/black" />
 
-</LinearLayout>
+</AbsoluteLayout>
+
+

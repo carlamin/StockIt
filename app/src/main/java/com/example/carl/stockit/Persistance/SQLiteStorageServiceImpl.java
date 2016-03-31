@@ -15,14 +15,14 @@ import java.util.List;
  * Created by carl on 27/03/16.
  */
 
-public class SQLiteStorageServiceImpl implements StorageService {
+public class SQLiteStorageServiceImpl  {
     private final ProduitOpenHelper produitOpenHelper;
 
     public SQLiteStorageServiceImpl(Context context) {
         produitOpenHelper = new ProduitOpenHelper(context);
     }
 
-    @Override
+
     public List<String> store(Context context, List<String> produits) {
         clear(context);
         SQLiteDatabase db = null;
@@ -41,7 +41,6 @@ public class SQLiteStorageServiceImpl implements StorageService {
 
 
 
-    @Override
     public List<String> restore(Context context) {
         SQLiteDatabase db = null;
         Cursor cursor = null;
@@ -59,7 +58,6 @@ public class SQLiteStorageServiceImpl implements StorageService {
         }
     }
 
-    @Override
     public List<String> clear(Context context) {
         SQLiteDatabase db = null;
         try {
@@ -71,13 +69,13 @@ public class SQLiteStorageServiceImpl implements StorageService {
         }
     }
 
-    @Override
-    public void add(Context context, String produit) {
+    public void add(Context context, String produit,int qtite) {
         SQLiteDatabase db = null;
         try {
             db = produitOpenHelper.getWritableDatabase();
             ContentValues insertValues = new ContentValues();
             insertValues.put(ProduitOpenHelper.PRODUIT_COL_NAME, produit);
+            insertValues.put(ProduitOpenHelper.PRODUIT_COL_QTITE,qtite);
             long rowId = db.insert(ProduitOpenHelper.PRODUIT_TABLE_NAME, null, insertValues);
         } finally {
             closeDB(db);
