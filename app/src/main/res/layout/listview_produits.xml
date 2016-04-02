@@ -19,18 +19,27 @@
         android:layout_marginLeft="0dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp"
-        android:layout_y="4dp" />
+        android:layout_y="48dp"
+        android:layout_x="112dp" />
 
     <TextView
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
+        android:layout_width="89dp"
+        android:layout_height="54dp"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="0"
         android:id="@+id/textView_stockProduit"
         android:inputType="number"
         android:layout_weight="0.12"
         android:layout_alignParentTop="true"
-        android:layout_x="304dp"
-        android:layout_y="4dp" />
+        android:layout_x="288dp"
+        android:layout_y="48dp" />
+
+    <NumberPicker
+        android:layout_width="77dp"
+        android:layout_height="92dp"
+        android:id="@+id/numberPicker_ModifierQtiteProduit"
+        android:layout_x="16dp"
+        android:layout_y="20dp"
+        android:orientation="vertical" />
 
 </AbsoluteLayout>

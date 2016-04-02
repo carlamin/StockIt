@@ -4,12 +4,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@android:color/darker_gray">
+    android:background="@android:color/holo_blue_dark">
 
 
         <TextView
-            android:layout_width="313dp"
-            android:layout_height="89dp"
+            android:layout_width="282dp"
+            android:layout_height="55dp"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/ajout_produit"
             android:id="@+id/textView_AjoutProduit"
@@ -20,7 +20,9 @@
             android:layout_marginTop="0dp"
             android:layout_column="0"
             android:layout_columnSpan="7"
-            android:layout_row="0" />
+            android:layout_row="0"
+            android:layout_x="64dp"
+            android:layout_y="17dp" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -49,6 +51,14 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
+    <EditText android:id="@+id/input_nomProduit"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:inputType="textCapWords"
+        android:hint="Nom Produit"
+        android:layout_x="62dp"
+        android:layout_y="97dp" />
+
     <EditText
         android:layout_width="277dp"
         android:layout_height="wrap_content"
@@ -58,14 +68,6 @@
         android:layout_x="65dp"
         android:layout_y="145dp"
         android:hint="Quantité" />
-
-    <EditText android:id="@+id/input_nomProduit"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:hint="Nom Produit"
-        android:layout_x="62dp"
-        android:layout_y="97dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="87dp"

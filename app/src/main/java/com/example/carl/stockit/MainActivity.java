@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.NumberPicker;
 
 import com.example.carl.stockit.Data.Produit;
 
@@ -41,6 +42,8 @@ private ListView listViewProduits;
 listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
         adapter = new ListProduitAdapter(this,R.layout.listview_produits);
         listViewProduits.setAdapter(adapter);
+
+
     }
 
     @Override
