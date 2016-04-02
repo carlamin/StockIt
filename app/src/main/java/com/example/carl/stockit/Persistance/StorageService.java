@@ -2,19 +2,22 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
+import com.example.carl.stockit.Data.Produit;
+
 import java.util.List;
 
 /**
  * Created by carl on 26/03/16.
  */
 public interface StorageService {
+    public void init();
     /**
      * Enregistre la liste des articles passés en paramètre.
      * @param context contexte de l'activité
      * @param articles liste des articles
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<?> store(Context context, List<String> articles);
+    public List<?> store(Context context, List<Produit> articles);
 
     /**
      * Récupère la liste des articles sauvegardés.

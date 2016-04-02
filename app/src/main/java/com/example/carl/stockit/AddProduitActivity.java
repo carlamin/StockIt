@@ -20,6 +20,7 @@ public class AddProduitActivity extends AppCompatActivity{
         FloatingActionButton fabAP = (FloatingActionButton) findViewById(R.id.fabAjoutProduit);
 
 
+
         fabAP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

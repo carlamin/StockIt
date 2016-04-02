@@ -4,24 +4,28 @@ import android.content.Context;
 
 import com.example.carl.stockit.Data.Produit;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by carl on 30/03/16.
  */
 public class StorageServiceImpl implements StorageService {
-    private List<Produit> listeProduit ;
-    @Override
-    public List<String> store(Context context, List<String> articles) {
-        clear(context);
+    private List<Produit> listeProduit;
 
-        return null;
+    public  void init(){
+        this.listeProduit = new ArrayList<Produit>();
+    }
+    @Override
+    public List<Produit> store(Context context, List<Produit> produits) {
+        clear(context);
+        listeProduit = produits;
+        return restore(context);
     }
 
     @Override
     public List<Produit> restore(Context context) {
-        Collections.sort(listeProduit);
+
         return  listeProduit;
 
     }
@@ -33,8 +37,11 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public void add(Context context, String article,int qtite) {
-        Produit p = new Produit(article,qtite);
+    public void add(Context context, String nomProduit,int qtite) {
+        Produit p = new Produit();
+        p.setNom(nomProduit);
+        p.setQuantite(qtite);
+
         listeProduit.add(p);
     }
 }

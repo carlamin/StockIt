@@ -2,8 +2,8 @@ package com.example.carl.stockit;
 
 import android.app.Application;
 
-import com.example.carl.stockit.Persistance.SQLiteStorageServiceImpl;
 import com.example.carl.stockit.Persistance.StorageService;
+import com.example.carl.stockit.Persistance.StorageServiceImpl;
 
 /**
  * Created by carl on 27/03/16.
@@ -14,7 +14,8 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        storageService = new SQLiteStorageServiceImpl(this);
+        storageService = new StorageServiceImpl();
+
     }
 
     public StorageService getStorageService() {

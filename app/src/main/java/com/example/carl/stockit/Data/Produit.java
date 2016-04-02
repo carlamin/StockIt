@@ -22,10 +22,10 @@ public class Produit implements Comparable{
         this.lieuStockage = lieuStockage;
     }
 
-    public Produit(String article, int qtite) {
-        this.nom = nom;
-        this.quantite = quantite;
+    public Produit() {
+
     }
+
 
     public String getNom() {
         return nom;

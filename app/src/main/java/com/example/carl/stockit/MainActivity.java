@@ -11,20 +11,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.carl.stockit.Data.Produit;
 
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 private ListView listViewProduits;
-    private ArrayAdapter<String> adapter;
+    private ListProduitAdapter adapter;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        //listProduit = new ArrayList<Produit>();
+        ((MyApplication) getApplication()).getStorageService().init();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +39,7 @@ private ListView listViewProduits;
             }
         });
 listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
-        adapter = new ArrayAdapter<String>(this,R.layout.listview_produits);
+        adapter = new ListProduitAdapter(this,R.layout.listview_produits);
         listViewProduits.setAdapter(adapter);
     }
 
@@ -65,7 +69,7 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_clear) {
-            List<String> produitList = ((MyApplication) getApplication()).getStorageService().clear(this);
+            List<Produit> produitList = (List<Produit>) ((MyApplication) getApplication()).getStorageService().clear(this);
             updateAdapter(produitList);
             return true;
         }
@@ -99,10 +103,10 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     }
     protected void onResume() {
         super.onResume();
-        List<String> produitList = ((MyApplication) getApplication()).getStorageService().restore(this);
-        updateAdapter(produitList);
+       List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restore(this);
+        updateAdapter(listProduit);
     }
-    protected void updateAdapter(List<String> produitList){
+    protected void updateAdapter(List<Produit> produitList){
         adapter.clear();
         adapter.addAll(produitList);
         adapter.notifyDataSetChanged();
