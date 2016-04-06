@@ -67,8 +67,13 @@ public class Produit implements Comparable{
         this.lieuStockage = lieuStockage;
     }
 
+    public void consommer(int q){
+        this.quantite = this.quantite - q;
+    }
 
-
+    public void ajouter(int q){
+        this.quantite = this.quantite + q;
+    }
     public int compareTo(Produit p) {
 
         return 0;
