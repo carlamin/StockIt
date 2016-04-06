@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.NumberPicker;
 import android.widget.TextView;
 
 import com.example.carl.stockit.Data.Produit;
@@ -50,23 +49,7 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> {
                 if (textView_qtiteP != null) {
                     textView_qtiteP.setText(String.valueOf(p.getQuantite()));
                 }
-                final int minValue = p.getQuantite();
-
-                final int maxValue = 500;
-                NumberPicker numberPicker_modifQtiteP = (NumberPicker) v.findViewById(R.id.numberPicker_ModifierQtiteProduit);
-                numberPicker_modifQtiteP.setMinValue(0);
-                numberPicker_modifQtiteP.setMaxValue(maxValue);
-                numberPicker_modifQtiteP.setWrapSelectorWheel(true);
-                numberPicker_modifQtiteP.setFormatter(new NumberPicker.Formatter() {
-                    @Override
-                    public String format(int index) {
-                        return  Integer.toString(index - minValue);
-                    }
-                });
-                if(numberPicker_modifQtiteP.getValue()+minValue != 0){
-                    p.setQuantite(p.getQuantite()+numberPicker_modifQtiteP.getValue()+minValue);
-                    textView_qtiteP.setText(String.valueOf(p.getQuantite()));
-                }
+               
 
 
             }

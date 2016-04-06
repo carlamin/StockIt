@@ -34,12 +34,5 @@
         android:layout_x="288dp"
         android:layout_y="48dp" />
 
-    <NumberPicker
-        android:layout_width="77dp"
-        android:layout_height="92dp"
-        android:id="@+id/numberPicker_ModifierQtiteProduit"
-        android:layout_x="16dp"
-        android:layout_y="20dp"
-        android:orientation="vertical" />
 
 </AbsoluteLayout>
