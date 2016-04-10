@@ -12,4 +12,8 @@
     <string name="title_activity_add_produit_tabs">AddProduitTabsActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="tab_1">Tab 1</string>
+
+
+    /* REFERENCE */
+    <string name="ajout_reference">Ajout Reference</string>
 </resources>
