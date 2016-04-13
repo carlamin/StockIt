@@ -26,7 +26,7 @@ public class AddProduitActivity extends AppCompatActivity{
                 if (editTextNomProduit.getText().toString().trim().isEmpty()&&editTextQtiteProduit.getText().toString().trim().isEmpty()) {
                     Toast.makeText(AddProduitActivity.this, R.string.mandatory_message, Toast.LENGTH_LONG).show();
                 } else {
-                    ((MyApplication) getApplication()).getStorageService().add(AddProduitActivity.this, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduit.getText().toString() ));
+                    ((MyApplication) getApplication()).getStorageService().addProduit(AddProduitActivity.this, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduit.getText().toString() ));
                     AddProduitActivity.this.finish();
                 }
 

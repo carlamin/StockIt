@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -7,78 +7,101 @@
     android:background="@android:color/holo_blue_dark">
 
 
-        <TextView
-            android:layout_width="282dp"
-            android:layout_height="55dp"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="@string/ajout_produit"
-            android:id="@+id/textView_AjoutProduit"
-            android:textSize="35sp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="0dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="0dp"
-            android:layout_column="0"
-            android:layout_columnSpan="7"
-            android:layout_row="0"
-            android:layout_x="64dp"
-            android:layout_y="17dp" />
-
-    <android.support.design.widget.TextInputLayout
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
+        android:layout_height="match_parent"
+        android:weightSum="1">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fabAjoutProduit"
-            android:layout_gravity="center_horizontal"
-            android:src="@android:drawable/ic_input_add"
-            android:layout_column="5"
-            android:layout_row="16"
-            android:layout_width="103dp"
-            android:layout_height="88dp"
-            android:layout_centerVertical="true"
-            android:layout_alignRight="@+id/textView_AjoutProduit"
-            android:layout_alignEnd="@+id/textView_AjoutProduit"
-            android:layout_x="230dp"
-            android:layout_y="328dp"
-            android:background="@android:color/holo_green_dark"
-            app:backgroundTint="@android:color/holo_green_dark" />
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.19"
+            android:weightSum="1">
 
-    <EditText android:id="@+id/input_nomProduit"
-        android:layout_width="278dp"
-        android:layout_height="wrap_content"
-        android:inputType="textCapWords"
-        android:hint="Nom Produit"
-        android:layout_x="62dp"
-        android:layout_y="97dp" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
-    <EditText
-        android:layout_width="277dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/input_quantiteProduit"
-        android:layout_x="65dp"
-        android:layout_y="145dp"
-        android:hint="Quantité" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/ajout_produit"
+                android:id="@+id/textView_AjoutProduit"
+                android:textSize="35sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="0dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="0dp"
+                android:layout_column="0"
+                android:layout_columnSpan="7"
+                android:layout_row="0"
+                android:layout_x="64dp"
+                android:layout_y="17dp"
+                android:layout_gravity="center_horizontal" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:layout_width="87dp"
-        android:layout_height="76dp"
-        android:id="@+id/view"
-        android:layout_x="76dp"
-        android:layout_y="338dp"
-        app:backgroundTint="@android:color/holo_red_dark"
-        android:src="@android:drawable/ic_delete"
-        android:background="@android:color/black" />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
-</AbsoluteLayout>
+            <EditText android:id="@+id/input_nomProduit"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:inputType="textCapWords"
+                android:hint="Nom Produit"
+                android:layout_x="62dp"
+                android:layout_y="97dp"
+                android:layout_gravity="center_horizontal" />
+
+            <EditText
+                android:layout_width="277dp"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:ems="10"
+                android:id="@+id/input_quantiteProduit"
+                android:layout_x="65dp"
+                android:layout_y="145dp"
+                android:hint="Quantité"
+                android:layout_gravity="center" />
+
+
+            <DatePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/datePicker"
+                android:layout_gravity="center_horizontal"
+                android:spinnersShown="false"
+                android:scaleY="1"
+
+                android:calendarViewShown="false" />
+
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fabAjoutProduit"
+                android:layout_gravity="center_horizontal"
+                android:src="@android:drawable/ic_input_add"
+                android:layout_column="5"
+                android:layout_row="16"
+                android:layout_width="71dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignRight="@+id/textView_AjoutProduit"
+                android:layout_alignEnd="@+id/textView_AjoutProduit"
+                android:layout_x="230dp"
+                android:layout_y="328dp"
+
+                android:background="@android:color/holo_green_dark"
+                app:backgroundTint="@android:color/holo_green_dark" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
 
 

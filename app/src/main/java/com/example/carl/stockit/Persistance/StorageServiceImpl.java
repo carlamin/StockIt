@@ -37,7 +37,7 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public void add(Context context, String nomProduit,int qtite) {
+    public void addProduit(Context context, String nomProduit,int qtite) {
         Produit p = new Produit();
         p.setNom(nomProduit);
         p.setQuantite(qtite);

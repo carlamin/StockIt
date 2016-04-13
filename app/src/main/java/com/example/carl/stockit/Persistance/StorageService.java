@@ -38,5 +38,5 @@ public interface StorageService {
      * @param context contexte de l'activité
      * @param article article
      */
-    public void add(Context context, String article,int qtite);
+    public void addProduit(Context context, String article,int qtite);
 }

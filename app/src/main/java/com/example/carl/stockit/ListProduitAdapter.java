@@ -1,6 +1,8 @@
 package com.example.carl.stockit;
 
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,36 +53,42 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> {
 
             if (editText_qtiteP != null) {
 
-                editText_qtiteP.setHint(String.valueOf(p.getQuantite()));
+                editText_qtiteP.setText(String.valueOf(p.getQuantite()));
             }
 
             Button button_ConsommerP = (Button) v.findViewById(R.id.button_ConsommerProduit);
             Button button_AjouterP = (Button) v.findViewById(R.id.button_AjouterProduit);
 
-            editText_qtiteP.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    int q;
-                    if (!hasFocus) {
-                        // code to execute when EditText loses focus
-                        if (!editText_qtiteP.getText().toString().trim().isEmpty()) {
-                            q = Integer.parseInt(editText_qtiteP.getText().toString());
-                            p.setQuantite(q);
+           editText_qtiteP.addTextChangedListener(new TextWatcher() {
+                                                       @Override
+                                                       public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                                                       }
+
+                                                       @Override
+                                                       public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+                                                       }
+
+                                                       @Override
+                                                       public void afterTextChanged(Editable editable) {
+                                                           if (!editText_qtiteP.getText().toString().trim().isEmpty()) {
+                                                               int q = Integer.parseInt(editText_qtiteP.getText().toString());
+                                                               p.setQuantite(q);
+
+
+                                                           }
+
+                                                       }});
+
+                    button_AjouterP.setOnClickListener(new View.OnClickListener() {
+
+                        public void onClick(View v) {
+                            p.ajouter(1);
                             notifyDataSetChanged();
 
                         }
-                    }
-                }
-            });
-
-            button_AjouterP.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View v) {
-                    p.ajouter(1);
-                    notifyDataSetChanged();
-
-                }
-            });
+                    });
             button_ConsommerP.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View v) {
