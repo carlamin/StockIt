@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@android:color/background_light">
 
 
     <LinearLayout
@@ -69,19 +69,32 @@
                 android:layout_y="145dp"
                 android:hint="Quantité"
                 android:layout_gravity="center" />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_gravity="center">
 
-
-            <DatePicker
+            <EditText
+                android:id="@+id/editText_calendarProduit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/datePicker"
-                android:layout_gravity="center_horizontal"
-                android:spinnersShown="false"
-                android:scaleY="1"
-
-                android:calendarViewShown="false" />
-
-
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="50dp"
+                android:ems="10"
+                android:inputType="date"
+                android:layout_gravity="center_vertical"
+                android:hint="Date d&apos;expiration">
+                <requestFocus />
+            </EditText>
+            <ImageButton
+                android:id="@+id/imageButton_calendarProduit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="selectDateToDisplay"
+                android:src="@drawable/calendar" />
+</LinearLayout>
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabAjoutProduit"
                 android:layout_gravity="center_horizontal"
