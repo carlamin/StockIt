@@ -5,6 +5,8 @@ import android.content.Context;
 import com.example.carl.stockit.Data.Produit;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -36,11 +38,17 @@ public class StorageServiceImpl implements StorageService {
         return listeProduit;
     }
 
-    @Override
-    public void addProduit(Context context, String nomProduit,int qtite) {
+    public void addProduit(Context context, String nomProduit,int qtite,int pDay,int pMonth , int pYear) {
         Produit p = new Produit();
         p.setNom(nomProduit);
         p.setQuantite(qtite);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH,pDay);
+        cal.set(Calendar.MONTH,pMonth);
+        cal.set(Calendar.YEAR,pYear);
+        Date date = cal.getTime();
+
+        p.setDateExpiration(date);
 
         listeProduit.add(p);
     }

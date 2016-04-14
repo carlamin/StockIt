@@ -1,7 +1,7 @@
 package com.example.carl.stockit.Data;
 
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by carl on 30/03/16.

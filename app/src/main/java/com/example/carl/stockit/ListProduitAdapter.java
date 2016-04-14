@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import com.example.carl.stockit.Data.Produit;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -100,7 +102,11 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> {
             final ImageButton button_settings_produit = (ImageButton) v.findViewById(R.id.imageButton_settings_produit);
             //button_settings_produit.setOnClickListener();
 
-
+            TextView dateExp = (TextView) v.findViewById(R.id.textView_DateExp);
+            DateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+            if(dateExp != null){
+                dateExp.setText(df.format(p.getDateExpiration()));
+            }
         }
         return v;
     }
