@@ -1,15 +1,10 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/produit_renommer"
-        android:title="@string/renommer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <item
         android:id="@+id/produit_modifier"
-        android:title="@string/modifier_produit"
+        android:title="@string/modifier"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

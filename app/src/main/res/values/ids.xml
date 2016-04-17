@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="action_clear" type="id">Clear</item>
+    <item name="produit_renommer" type="id">renommer</item>
 </resources>

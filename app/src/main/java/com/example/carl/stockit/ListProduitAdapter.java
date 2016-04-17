@@ -1,15 +1,19 @@
 package com.example.carl.stockit;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.carl.stockit.Data.Produit;
@@ -21,7 +25,7 @@ import java.util.List;
 /**
  * Created by carl on 02/04/16.
  */
-public class ListProduitAdapter extends ArrayAdapter<Produit> {
+public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuItem.OnMenuItemClickListener{
 
     public ListProduitAdapter(Context context, int textViewResourceId) {
         super(context, textViewResourceId);
@@ -107,8 +111,54 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> {
             if(dateExp != null){
                 dateExp.setText(df.format(p.getDateExpiration()));
             }
+
+            LinearLayout linearLayoutP = (LinearLayout) v.findViewById(R.id.linearLayout_produit);
+            final LinearLayout linearLayoutPPF = (LinearLayout) v.findViewById(R.id.linearLayout_produitPlusInfo);
+
+            textView_nomP.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if(linearLayoutPPF.getVisibility() == View.VISIBLE){
+                    linearLayoutPPF.setVisibility(View.GONE);
+                }else{
+                    linearLayoutPPF.setVisibility(View.VISIBLE);}
+                }
+            });
+
+            v.findViewById(R.id.imageButton_settings_produit).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                     PopupMenu popupMenu = new PopupMenu(getContext(), view);
+                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch(item.getItemId()){
+                                case R.id.produit_modifier :
+                                    Intent addIntent = new Intent(getContext(), ModifierProduitActivity.class);
+                                    getContext().startActivity(addIntent);
+                                    break;
+                                case R.id.produit_delete:
+                                    remove(p);
+                                    break;
+
+                            }
+                            return true;
+                        }
+                    });
+                    popupMenu.inflate(R.menu.produit_settings_menu);
+                    popupMenu.show();
+                }
+            });
         }
-        return v;
+
+
+
+
+    return v;
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        return false;
     }
 }
 
