@@ -1,18 +1,22 @@
 package com.example.carl.stockit;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
 import android.view.View;
 import android.widget.ListView;
 
+import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 
 import java.util.List;
@@ -41,8 +45,37 @@ private ListView listViewProduits;
 listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
         adapter = new ListProduitAdapter(this,R.layout.listview_produits);
         listViewProduits.setAdapter(adapter);
-       
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
 
+        initLeftNav();
+
+
+    }
+
+    private void initLeftNav(){
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        Menu menu = navigationView.getMenu();
+        List<LieuStockage> lieuxStockages = ((MyApplication)getApplication()).getStorageService().findLieu();
+        final SubMenu subMenuLieuStockage = menu.addSubMenu("Lieux de stockage");
+
+        for (LieuStockage lieuStockage : lieuxStockages) {
+            MenuItem menuItem = subMenuLieuStockage.add(lieuStockage.getNomLieu());
+            menuItem.setIcon(Drawable.createFromPath(lieuStockage.getImage()));
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.putExtra("id", lieuStockage.getId()  );
+            menuItem.setIntent(intent);
+        }
+
+        final SubMenu subMenu = menu.addSubMenu("Settings");
+        for (int i = 0; i < 2; i++) {
+            subMenu.add("SubMenu Item " + (i + 1));
+        }
+
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -83,21 +116,10 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+        int id = (int) item.getIntent().getSerializableExtra("id");
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+       if(id == 1){}else if(id ==2 ){}else if(id ==3){}
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -105,7 +127,7 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     }
     protected void onResume() {
         super.onResume();
-       List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restore(this);
+       List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restoreProduits(this);
         updateAdapter(listProduit);
     }
     protected void updateAdapter(List<Produit> produitList){

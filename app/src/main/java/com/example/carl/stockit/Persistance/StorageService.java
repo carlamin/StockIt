@@ -2,6 +2,7 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
+import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 
 import java.util.List;
@@ -17,14 +18,14 @@ public interface StorageService {
      * @param articles liste des articles
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<?> store(Context context, List<Produit> articles);
+    public List<?> store(Context context, List<Produit> articles,List<LieuStockage> listeLieux);
 
     /**
      * Récupère la liste des articles sauvegardés.
      * @param context contexte de l'activité
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<?> restore(Context context);
+    public List<?> restoreProduits(Context context);
 
     /**
      * Vide la liste des articles.
@@ -40,4 +41,5 @@ public interface StorageService {
     public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear);
     public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
 
+   public List<LieuStockage> findLieu();
 }

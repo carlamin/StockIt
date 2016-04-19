@@ -2,6 +2,7 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
+import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 
 import java.util.ArrayList;
@@ -14,19 +15,28 @@ import java.util.List;
  */
 public class StorageServiceImpl implements StorageService {
     private List<Produit> listeProduit;
+    private List<LieuStockage> listeLieux;
 
     public  void init(){
         this.listeProduit = new ArrayList<Produit>();
+        this.listeLieux = new ArrayList<LieuStockage>();
+        LieuStockage lieu1 = new LieuStockage(1,"Frigo",30,"Cuisine","","/cuisine");
+        LieuStockage lieu2 = new LieuStockage(2,"Armoire",40,"Salon","","/salon");
+        LieuStockage lieu3 = new LieuStockage(3,"Four",3,"Cuisine","","/img");
+        this.listeLieux.add(lieu1);
+        this.listeLieux.add(lieu2);
+        this.listeLieux.add(lieu3);
     }
     @Override
-    public List<Produit> store(Context context, List<Produit> produits) {
+    public List<Produit> store(Context context, List<Produit> produits,List<LieuStockage> listeLieux) {
         clear(context);
         listeProduit = produits;
-        return restore(context);
+        this.listeLieux=listeLieux;
+        return restoreProduits(context);
     }
 
     @Override
-    public List<Produit> restore(Context context) {
+    public List<Produit> restoreProduits(Context context) {
 
         return  listeProduit;
 
@@ -66,5 +76,14 @@ public class StorageServiceImpl implements StorageService {
 
         p.setDateExpiration(date);
         listeProduit.set(position,p);
+    }
+
+    @Override
+    public List<LieuStockage> findLieu() {
+
+
+
+
+        return this.listeLieux;
     }
 }

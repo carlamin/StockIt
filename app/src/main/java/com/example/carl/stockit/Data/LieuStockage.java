@@ -4,10 +4,38 @@ package com.example.carl.stockit.Data;
  * Created by carl on 30/03/16.
  */
 public class LieuStockage {
+    private int id;
     private String nomLieu;
     private int capacite;
     private String localisation;
     private String autreInfos;
+    private String image;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public LieuStockage(int id, String nomLieu, int capacite, String localisation, String autreInfos, String image) {
+
+        this.id = id;
+        this.nomLieu = nomLieu;
+        this.capacite = capacite;
+        this.localisation = localisation;
+        this.autreInfos = autreInfos;
+        this.image = image;
+    }
 
     public LieuStockage(String nomLieu, String autreInfos, String localisation, int capacite) {
         this.nomLieu = nomLieu;

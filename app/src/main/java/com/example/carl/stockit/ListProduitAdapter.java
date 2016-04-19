@@ -138,7 +138,7 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
                                     getContext().startActivity(ModifierIntent);
                 }
             });
-            //final ImageButton imgDeleteProduit = (ImageButton) v.findViewById(R.id.imageButton_deleteProduit);
+            final ImageButton imgDeleteProduit = (ImageButton) v.findViewById(R.id.imageButton_deleteProduit);
 
 
         }
