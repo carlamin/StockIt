@@ -21,6 +21,8 @@
         </activity>
         <activity android:name=".AddProduitActivity" />
         <activity android:name=".Persistance.addReferenceActivity"></activity>
+        <activity android:name=".ModifierProduitActivity"></activity>
+
     </application>
 
 </manifest>

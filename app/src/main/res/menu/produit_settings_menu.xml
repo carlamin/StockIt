@@ -1,0 +1,17 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/produit_modifier"
+        android:title="@string/modifier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <item
+    android:id="@+id/produit_delete"
+    android:title="@string/delete"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+
+</menu>

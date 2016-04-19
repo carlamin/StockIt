@@ -30,7 +30,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/ajout_produit"
+                android:text="@string/modifier_produit"
                 android:id="@+id/textView_ModifierProduit"
                 android:textSize="35sp"
                 android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
 
-            <EditText android:id="@+id/input_nomProduit"
+            <EditText android:id="@+id/input_nomProduitM"
                 android:layout_width="278dp"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/input_quantiteProduit"
+                android:id="@+id/input_quantitePM"
                 android:layout_x="65dp"
                 android:layout_y="145dp"
                 android:hint="Quantité"
@@ -76,29 +76,29 @@
                 android:weightSum="1"
                 android:layout_gravity="center">
 
-            <EditText
-                android:id="@+id/editText_calendarProduit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:ems="10"
-                android:inputType="date"
-                android:hint="Date d&apos;expiration"
-                android:layout_weight="0.10"
-                android:layout_gravity="center">
-                <requestFocus />
-            </EditText>
-            <ImageButton
-                android:id="@+id/imageButton_calendarProduit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="selectDateToDisplay"
-                android:src="@drawable/calendar" />
-</LinearLayout>
+                <EditText
+                    android:id="@+id/editText_calendarProduitM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:ems="10"
+                    android:inputType="date"
+                    android:hint="Date d&apos;expiration"
+                    android:layout_weight="0.10"
+                    android:layout_gravity="center">
+                    <requestFocus />
+                </EditText>
+                <ImageButton
+                    android:id="@+id/imageButton_calendarProduitM"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="selectDateToDisplay"
+                    android:src="@drawable/calendar" />
+            </LinearLayout>
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fabAjoutProduit"
+                android:id="@+id/fabModifierProduit"
                 android:layout_gravity="center_horizontal"
-                android:src="@android:drawable/ic_input_add"
+                android:src="@android:drawable/ic_menu_edit"
                 android:layout_column="5"
                 android:layout_row="16"
                 android:layout_width="71dp"
@@ -109,8 +109,8 @@
                 android:layout_x="230dp"
                 android:layout_y="328dp"
 
-                android:background="@android:color/holo_green_dark"
-                app:backgroundTint="@android:color/holo_green_dark" />
+                android:background="@android:color/holo_orange_light"
+                app:backgroundTint="@android:color/holo_orange_dark" />
 
         </LinearLayout>
     </LinearLayout>

@@ -9,9 +9,14 @@
     <string name="action_clear">Vider</string>
     <string name="nom">Nom</string>
     <string name="ajout_produit">Ajout Produit</string>
+    <string name="modifier_produit">Modifier Produit</string>
+
     <string name="title_activity_add_produit_tabs">AddProduitTabsActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="tab_1">Tab 1</string>
+    <string name="delete" >Supprimmer</string>
+    <string name="modifier" >Modifier</string>
+    <string name="renommer">Renommer</string>
 
 
     /* REFERENCE */

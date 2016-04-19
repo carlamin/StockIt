@@ -36,7 +36,8 @@ public interface StorageService {
     /**
      * Enregistre un nouvel article passé en paramètre.
      * @param context contexte de l'activité
-     * @param article article
      */
-    public void add(Context context, String article,int qtite);
+    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear);
+    public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
+
 }
