@@ -1,14 +1,13 @@
 package com.example.carl.stockit.Data;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created by carl on 30/03/16.
- */
-public class Produit implements Comparable{
+
+public class Produit implements Comparable,Serializable{
     private String nom;
-    private int quantite;
+   private int quantite;
     private Date dateExpiration;
     private Reference reference;
     private LieuStockage lieuStockage;

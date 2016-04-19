@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:ems="10"
-                android:id="@+id/input_quantiteProduitM"
+                android:id="@+id/input_quantitePM"
                 android:layout_x="65dp"
                 android:layout_y="145dp"
                 android:hint="Quantité"

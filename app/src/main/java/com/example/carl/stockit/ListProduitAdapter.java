@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.carl.stockit.Data.Produit;
@@ -26,23 +25,28 @@ import java.util.List;
  * Created by carl on 02/04/16.
  */
 public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuItem.OnMenuItemClickListener{
+    private List<Produit> listProduits;
+    Context context;
 
-    public ListProduitAdapter(Context context, int textViewResourceId) {
-        super(context, textViewResourceId);
+    public ListProduitAdapter(Context context, int resource, List<Produit> objects, List<Produit> listProduits, Context context1) {
+        super(context, resource, objects);
+        this.listProduits = listProduits;
+        context = context1;
     }
 
-    public ListProduitAdapter(Context context, int resource, List<Produit> items) {
-        super(context, resource, items);
+    public ListProduitAdapter(Context context, int resource) {
+        super(context, resource);
     }
+
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View v = convertView;
 
         if (v == null) {
             LayoutInflater vi;
-            vi = LayoutInflater.from(getContext());
+            vi =LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.listview_produits, null);
         }
 
@@ -128,26 +132,15 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
             v.findViewById(R.id.imageButton_settings_produit).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                     PopupMenu popupMenu = new PopupMenu(getContext(), view);
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        public boolean onMenuItemClick(MenuItem item) {
-                            switch(item.getItemId()){
-                                case R.id.produit_modifier :
-                                    Intent addIntent = new Intent(getContext(), ModifierProduitActivity.class);
-                                    getContext().startActivity(addIntent);
-                                    break;
-                                case R.id.produit_delete:
-                                    remove(p);
-                                    break;
-
-                            }
-                            return true;
-                        }
-                    });
-                    popupMenu.inflate(R.menu.produit_settings_menu);
-                    popupMenu.show();
+                                    Intent ModifierIntent = new Intent(getContext(), ModifierProduitActivity.class);
+                                    ModifierIntent.putExtra("produit", p);
+                                    ModifierIntent.putExtra("position",position);
+                                    getContext().startActivity(ModifierIntent);
                 }
             });
+            //final ImageButton imgDeleteProduit = (ImageButton) v.findViewById(R.id.imageButton_deleteProduit);
+
+
         }
 
 

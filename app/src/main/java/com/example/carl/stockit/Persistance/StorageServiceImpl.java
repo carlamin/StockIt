@@ -38,9 +38,9 @@ public class StorageServiceImpl implements StorageService {
         return listeProduit;
     }
 
-    public void addProduit(Context context, String nomProduit,int qtite,int pDay,int pMonth , int pYear) {
+    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth , int pYear) {
         Produit p = new Produit();
-        p.setNom(nomProduit);
+        p.setNom(nomP);
         p.setQuantite(qtite);
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH,pDay);
@@ -51,5 +51,20 @@ public class StorageServiceImpl implements StorageService {
         p.setDateExpiration(date);
 
         listeProduit.add(p);
+    }
+
+    @Override
+    public void modifierProduit(Context context, int position, String nomP, int qtite, int pDay, int pMonth, int pYear) {
+        Produit p = new Produit();
+        p.setNom(nomP);
+        p.setQuantite(qtite);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.DAY_OF_MONTH,pDay);
+        cal.set(Calendar.MONTH,pMonth);
+        cal.set(Calendar.YEAR,pYear);
+        Date date = cal.getTime();
+
+        p.setDateExpiration(date);
+        listeProduit.set(position,p);
     }
 }
