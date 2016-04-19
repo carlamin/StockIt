@@ -17,4 +17,8 @@
     <string name="delete" >Supprimmer</string>
     <string name="modifier" >Modifier</string>
     <string name="renommer">Renommer</string>
+
+
+    /* REFERENCE */
+    <string name="ajout_reference">Ajout Reference</string>
 </resources>

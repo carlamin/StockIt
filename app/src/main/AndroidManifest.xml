@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddProduitActivity"></activity>
+        <activity android:name=".AddProduitActivity" />
+        <activity android:name=".Persistance.addReferenceActivity"></activity>
         <activity android:name=".ModifierProduitActivity"></activity>
 
     </application>
