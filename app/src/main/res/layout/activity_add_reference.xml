@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.carl.stockit.Persistance.addReferenceActivity"
+    tools:context=".AddReferenceActivity"
     android:clickable="true">
 
     <TextView
@@ -49,7 +49,7 @@
     <EditText
         android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="textCapWords"
         android:ems="10"
         android:id="@+id/categorie"
         android:layout_x="0dp"
@@ -59,7 +59,7 @@
     <EditText
         android:layout_width="277dp"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="textCapWords"
         android:ems="10"
         android:id="@+id/URLPhoto"
         android:layout_x="0dp"

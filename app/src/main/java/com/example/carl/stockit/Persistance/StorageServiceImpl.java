@@ -2,6 +2,7 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
+import com.example.carl.stockit.AddReferenceActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 
@@ -85,5 +86,11 @@ public class StorageServiceImpl implements StorageService {
 
 
         return this.listeLieux;
+    }
+
+    @Override
+    public void addReference(AddReferenceActivity addReferenceActivity, String trim, int i, String trim1, String trim2) {
+        /* TODO */
+
     }
 }

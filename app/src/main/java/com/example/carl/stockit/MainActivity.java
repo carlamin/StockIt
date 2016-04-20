@@ -23,8 +23,10 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private ListView listViewProduits;
+
+    private ListView listViewProduits;
     private ListProduitAdapter adapter;
+    final int AJOUTREFERENCE = 250;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,11 +72,21 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
             menuItem.setIntent(intent);
         }
 
+
+
         final SubMenu subMenu = menu.addSubMenu("Settings");
+
+        MenuItem menuItem = subMenu.add(0,25,Menu.NONE,"Ajouter une référence");
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("id",AJOUTREFERENCE);
+        menuItem.setIntent(intent);
+
+/*
         for (int i = 0; i < 2; i++) {
             subMenu.add("SubMenu Item " + (i + 1));
-        }
 
+        }
+*/
         navigationView.setNavigationItemSelectedListener(this);
     }
 
@@ -118,7 +130,13 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
         // Handle navigation view item clicks here.
         int id = (int) item.getIntent().getSerializableExtra("id");
 
-       if(id == 1){}else if(id ==2 ){}else if(id ==3){}
+       if(id == AJOUTREFERENCE){
+           /* LANCER AJOUT REFERENCE */
+           System.out.println("SWAG!");
+           Intent addIntent = new Intent(MainActivity.this, AddReferenceActivity.class);
+           startActivity(addIntent);
+
+       }else if(id ==2 ){}else if(id ==3){}
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
