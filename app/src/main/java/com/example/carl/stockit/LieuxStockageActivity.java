@@ -16,47 +16,47 @@ import android.view.SubMenu;
 import android.view.View;
 import android.widget.ListView;
 
-import com.example.carl.stockit.Adapter.ListProduitAdapter;
+import com.example.carl.stockit.Adapter.ListLieuxStockageAdaper;
 import com.example.carl.stockit.Data.LieuStockage;
-import com.example.carl.stockit.Data.Produit;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
+public class LieuxStockageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-private ListView listViewProduits;
-    private ListProduitAdapter adapter;
+    private ListView listViewLieuxStockage;
+    private ListLieuxStockageAdaper adapter;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_lieux_stockage);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent addIntent = new Intent(MainActivity.this, AddProduitActivity.class);
-                startActivity(addIntent);
+                //Intent addIntent = new Intent(LieuxStockageActivity.this, AddLieuxStockageActivity.class);
+                //startActivity(addIntent);
             }
         });
-listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
-        adapter = new ListProduitAdapter(this,R.layout.listview_produits);
-        listViewProduits.setAdapter(adapter);
-
+        listViewLieuxStockage = (ListView) findViewById(R.id.content_main_listView_lieux_de_stockage_contents);
+       // adapter = new ListLieuxStockageAdaper(this,R.layout.listview_lieux_stockage);
+       // listViewLieuxStockage.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        //drawer.setDrawerListener(toggle);
+        drawer.setDrawerListener(toggle);
         toggle.syncState();
-
         initLeftNav();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
-
     private void initLeftNav(){
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
@@ -64,7 +64,6 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
 
         Intent home = new Intent(this,MainActivity.class);
         menu.getItem(0).setIntent(home);
-
         final SubMenu subMenuLieuStockage = menu.addSubMenu("Produits");
 
 
@@ -88,7 +87,6 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
 
         navigationView.setNavigationItemSelectedListener(this);
     }
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -102,7 +100,7 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.lieux_stockage, menu);
         return true;
     }
 
@@ -113,12 +111,12 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_clear) {
-            List<Produit> produitList = (List<Produit>) ((MyApplication) getApplication()).getStorageService().clearProduit(this);
-            updateAdapter(produitList);
+            List<LieuStockage> lieuStockageList = (List<LieuStockage>) ((MyApplication) getApplication()).getStorageService().clearLieuStockage(this);
+            updateAdapter(lieuStockageList);
             return true;
         }
+
 
         return super.onOptionsItemSelected(item);
     }
@@ -139,12 +137,12 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     }
     protected void onResume() {
         super.onResume();
-       List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restoreProduits(this);
-        updateAdapter(listProduit);
+        List<LieuStockage> listLieuxStockge = (List<LieuStockage>) ((MyApplication) getApplication()).getStorageService().restoreLieuxStockage(this);
+        updateAdapter(listLieuxStockge);
     }
-    protected void updateAdapter(List<Produit> produitList){
-        adapter.clear();
-        adapter.addAll(produitList);
-        adapter.notifyDataSetChanged();
+    protected void updateAdapter(List<LieuStockage> produitList){
+        //adapter.clear();
+        //adapter.addAll(produitList);
+        //adapter.notifyDataSetChanged();
     }
 }
