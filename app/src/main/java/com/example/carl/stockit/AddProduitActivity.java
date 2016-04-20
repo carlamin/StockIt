@@ -18,9 +18,9 @@ import java.util.Date;
  * Created by carl on 26/03/16.
  */
 public class AddProduitActivity extends AppCompatActivity implements View.OnClickListener{
-    private int pYear;
-    private int pMonth;
-    private int pDay;
+    private int pYear = 0;
+    private int pMonth = 0;
+    private int pDay = 0;
     ImageButton datePicker;
     EditText txtDate;
     static final int DATE_DIALOG_ID = 0;
@@ -79,7 +79,9 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
                         @Override
                         public void onDateSet(DatePicker view, int year,
                                               int monthOfYear, int dayOfMonth) {
-
+                            pYear=year;
+                            pMonth=monthOfYear+1;
+                            pDay=dayOfMonth;
                             txtDate.setText(dayOfMonth + "-" + (monthOfYear + 1) + "-" + year);
 
                         }

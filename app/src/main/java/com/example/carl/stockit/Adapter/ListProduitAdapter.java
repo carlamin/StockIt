@@ -1,4 +1,4 @@
-package com.example.carl.stockit;
+package com.example.carl.stockit.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.carl.stockit.Data.Produit;
+import com.example.carl.stockit.ModifierProduitActivity;
+import com.example.carl.stockit.R;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

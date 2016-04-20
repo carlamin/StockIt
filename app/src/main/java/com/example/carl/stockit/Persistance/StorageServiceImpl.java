@@ -18,7 +18,7 @@ public class StorageServiceImpl implements StorageService {
     private List<Produit> listeProduit;
     private List<LieuStockage> listeLieux;
 
-    public  void init(){
+    public StorageServiceImpl() {
         this.listeProduit = new ArrayList<Produit>();
         this.listeLieux = new ArrayList<LieuStockage>();
         LieuStockage lieu1 = new LieuStockage(1,"Frigo",30,"Cuisine","","/cuisine");
@@ -28,12 +28,26 @@ public class StorageServiceImpl implements StorageService {
         this.listeLieux.add(lieu2);
         this.listeLieux.add(lieu3);
     }
+
+    public  void init(){
+        //this.listeProduit = ;
+        //this.listeLieux = ;
+
+    }
+
+
     @Override
-    public List<Produit> store(Context context, List<Produit> produits,List<LieuStockage> listeLieux) {
-        clear(context);
+    public List<Produit> storeProduit(Context context, List<Produit> produits) {
+        clearProduit(context);
         listeProduit = produits;
-        this.listeLieux=listeLieux;
         return restoreProduits(context);
+    }
+
+    @Override
+    public List<LieuStockage> storeLieuStockage(Context context, List<LieuStockage> listeLieux) {
+        clearProduit(context);
+        this.listeLieux= listeLieux;
+        return restoreLieuxStockage(context);
     }
 
     @Override
@@ -44,9 +58,21 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public List<Produit> clear(Context context) {
+    public List<LieuStockage> restoreLieuxStockage(Context context) {
+        return  listeLieux;
+
+    }
+
+    @Override
+    public List<Produit> clearProduit(Context context) {
         listeProduit.clear();
         return listeProduit;
+    }
+
+    @Override
+    public List<LieuStockage> clearLieuStockage(Context context) {
+        listeLieux.clear();
+        return listeLieux;
     }
 
     public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth , int pYear) {
@@ -79,8 +105,6 @@ public class StorageServiceImpl implements StorageService {
         listeProduit.set(position,p);
     }
 
-    @Override
-    public List<LieuStockage> findLieu() {
 
 
 

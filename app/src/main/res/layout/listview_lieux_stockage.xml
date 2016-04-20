@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1"
+    android:contextClickable="true"
+    android:clickable="true"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout_lieuxStockage">
+
+        <TextView
+            android:id="@+id/textView_nomLieuxStockage"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:text="TextView"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="3dp"
+            android:layout_y="46dp"
+            android:layout_x="10dp"
+            android:layout_weight="0.94"
+            android:clickable="true"
+            android:contextClickable="true" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_settings_lieuxStockage"
+            android:layout_x="335dp"
+            android:layout_y="46dp"
+            android:background="@android:color/holo_orange_light"
+            android:src="@android:drawable/ic_menu_edit"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="100dp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageButton_deleteLieuxStockage"
+            android:src="@android:drawable/ic_delete" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="87dp"
+        android:weightSum="1"
+        android:id="@+id/linearLayout_lieuxStockagePlusInfo"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Reference"
+                android:id="@+id/textView_referenceProduit" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Medium Text"
+                android:id="@+id/textView2"
+                android:layout_marginLeft="70dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

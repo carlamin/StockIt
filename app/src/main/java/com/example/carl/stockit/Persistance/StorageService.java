@@ -12,28 +12,31 @@ import java.util.List;
  * Created by carl on 26/03/16.
  */
 public interface StorageService {
-    public void init();
     /**
      * Enregistre la liste des articles passés en paramètre.
      * @param context contexte de l'activité
-     * @param articles liste des articles
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<?> store(Context context, List<Produit> articles,List<LieuStockage> listeLieux);
+    public List<Produit> storeProduit(Context context, List<Produit> produits);
+    public List<LieuStockage> storeLieuStockage(Context context, List<LieuStockage> articles);
 
     /**
      * Récupère la liste des articles sauvegardés.
      * @param context contexte de l'activité
      * @return liste des articles sauvegardés par ordre alphabétique
      */
-    public List<?> restoreProduits(Context context);
+    public List<Produit> restoreProduits(Context context);
+    public List<LieuStockage> restoreLieuxStockage(Context context);
+
 
     /**
      * Vide la liste des articles.
      * @param context contexte de l'activité
      * @return liste des articles vide.
      */
-    public List<?> clear(Context context);
+    public List<Produit> clearProduit(Context context);
+    public List<LieuStockage> clearLieuStockage(Context context);
+
 
     /**
      * Enregistre un nouvel article passé en paramètre.
@@ -41,8 +44,6 @@ public interface StorageService {
      */
     public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear);
     public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
-
-   public List<LieuStockage> findLieu();
 
     void addReference(AddReferenceActivity addReferenceActivity, String trim, int i, String trim1, String trim2);
 }
