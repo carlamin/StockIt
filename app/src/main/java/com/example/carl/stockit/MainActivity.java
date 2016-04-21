@@ -131,7 +131,7 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = (int) item.getIntent().getSerializableExtra("id");
+       /* int id = (int) item.getIntent().getSerializableExtra("id");
 
         // peut être inutile */
         /*

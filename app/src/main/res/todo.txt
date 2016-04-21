@@ -1,0 +1,17 @@
+REference :
+- visualiser les refences existantes
+- modifier les ref existantes
+- dans ajout produit faire en sorte que l'on puisse ajouter une refe au produit
+- API Code barre
+- API photo
+
+
+BD :
+- Faire les creation de tables
+- faire les interactions des objets java vers les données de la BD
+
+Produit :
+- Afficher la date de peremption
+- supprimer un produit
+
+A completer

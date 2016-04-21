@@ -5,11 +5,14 @@ package com.example.carl.stockit.Data;
  */
 public class Reference {
     private String nomRef;
-    private String codeBarre;
+    private int codeBarre;
     private String categorie;
     private String URLPhoto;
 
-    public Reference(String nomRef, String codeBarre, String categorie, String URLPhoto) {
+
+    public Reference(){}
+
+    public Reference(String nomRef, int codeBarre, String categorie, String URLPhoto) {
         this.nomRef = nomRef;
         this.codeBarre = codeBarre;
         this.categorie = categorie;
@@ -24,11 +27,11 @@ public class Reference {
         this.nomRef = nomRef;
     }
 
-    public String getCodeBarre() {
+    public int getCodeBarre() {
         return codeBarre;
     }
 
-    public void setCodeBarre(String codeBarre) {
+    public void setCodeBarre(int codeBarre) {
         this.codeBarre = codeBarre;
     }
 

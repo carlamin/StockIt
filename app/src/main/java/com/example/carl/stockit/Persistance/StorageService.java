@@ -45,5 +45,5 @@ public interface StorageService {
     public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear);
     public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
 
-    void addReference(AddReferenceActivity addReferenceActivity, String trim, int i, String trim1, String trim2);
+    void addReference(Context addReferenceActivity, String trim, int i, String trim1, String trim2);
 }

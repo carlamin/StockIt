@@ -35,7 +35,11 @@ public class AddReferenceActivity extends AppCompatActivity{
                     Toast.makeText(AddReferenceActivity.this, R.string.mandatory_message, Toast.LENGTH_LONG).show();
                 }
                 else {
-                    ((MyApplication) getApplication()).getStorageService().addReference(AddReferenceActivity.this, editTextNomReference.getText().toString().trim(),Integer.parseInt( editTextCodeBarre.getText().toString()),editTextCategorie.getText().toString().trim(),editURLPhoto.getText().toString().trim());
+                    ((MyApplication) getApplication()).getStorageService().addReference(AddReferenceActivity.this,
+                            editTextNomReference.getText().toString().trim(),
+                            Integer.parseInt( editTextCodeBarre.getText().toString()),
+                            editTextCategorie.getText().toString().trim(),
+                            editURLPhoto.getText().toString().trim());
                     AddReferenceActivity.this.finish();
                 }
             }

@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.carl.stockit.AddReferenceActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
+import com.example.carl.stockit.Data.Reference;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -107,14 +108,15 @@ public class StorageServiceImpl implements StorageService {
 
 
 
-
-
-        return this.listeLieux;
-    }
-
     @Override
-    public void addReference(AddReferenceActivity addReferenceActivity, String trim, int i, String trim1, String trim2) {
-        /* TODO */
+    public void addReference(Context context, String nomReference, int codeBarre, String categorie, String urlPhoto) {
+        Reference reference = new Reference();
+        reference.setCategorie(categorie);
+        reference.setCodeBarre(codeBarre);
+        reference.setNomRef(nomReference);
+        reference.setURLPhoto(urlPhoto);
 
+        // il faut ensuite ajouter la ref dans la BD
+        // la methode d'appel à la BD doit etre dans reference.java
     }
 }
