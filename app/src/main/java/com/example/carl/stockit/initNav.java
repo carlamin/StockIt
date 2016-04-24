@@ -20,7 +20,6 @@ import java.util.List;
 public class InitNav implements NavigationView.OnNavigationItemSelectedListener {
 
 
-    final int AJOUTREFERENCE = 250;
     Activity activity;
     public InitNav(Activity activity){
         this.activity = activity;
@@ -50,13 +49,15 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
 
 
 
-        final SubMenu subMenu = menu.addSubMenu("Settings");
+        final SubMenu subMenu = menu.addSubMenu("References");
 
         MenuItem menuItem = subMenu.add("Ajouter une référence");
         Intent intent = new Intent(activity, AddReferenceActivity.class);
-        intent.putExtra("id",AJOUTREFERENCE);
         menuItem.setIntent(intent);
 
+        menuItem = subMenu.add("Voir les références");
+        intent = new Intent(activity, ViewReferenceActivity.class);
+        menuItem.setIntent(intent);
 
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -71,7 +72,6 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
         DrawerLayout drawer = (DrawerLayout) activity.findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
 
-        activity.finish();
         return true;
     }
 }

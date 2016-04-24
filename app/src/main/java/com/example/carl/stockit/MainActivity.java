@@ -50,11 +50,11 @@ public class MainActivity extends AppCompatActivity {
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         //drawer.setDrawerListener(toggle);
         toggle.syncState();
+
         /* TEST navigateur */
         InitNav initNav = new InitNav(this);
         initNav.initleftnav();
 
-        //initLeftNav();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(initNav);
 
@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    
+
     protected void onResume() {
         super.onResume();
        List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restoreProduits(this);
