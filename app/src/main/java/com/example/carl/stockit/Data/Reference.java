@@ -50,4 +50,5 @@ public class Reference {
     public void setURLPhoto(String URLPhoto) {
         this.URLPhoto = URLPhoto;
     }
+
 }

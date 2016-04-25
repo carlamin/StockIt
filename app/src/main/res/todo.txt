@@ -13,5 +13,7 @@ BD :
 Produit :
 - Afficher la date de peremption
 - supprimer un produit
+-Spinner lieu et reference
+qffichqge de lq bone reference dqns produit
 
 A completer

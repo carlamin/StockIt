@@ -1,23 +1,33 @@
 package com.example.carl.stockit;
 
 import android.app.DatePickerDialog;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.carl.stockit.Data.LieuStockage;
+import com.example.carl.stockit.Data.Reference;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by carl on 26/03/16.
  */
-public class AddProduitActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddProduitActivity extends AppCompatActivity implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener {
     private int pYear = 0;
     private int pMonth = 0;
     private int pDay = 0;
@@ -57,6 +67,42 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
         });
 
 
+        // SPINNER POUR LIEUX DE STOCKAGE
+        Spinner spinnar = (Spinner) findViewById(R.id.spinner_lieuxStockage);
+        ArrayAdapter<String> adapter;
+        List<String> list;
+
+        list = new ArrayList<String>();
+        List<LieuStockage> listLieux = ((MyApplication)getApplication()).getStorageService().restoreLieuxStockage(this);
+        for(LieuStockage l : listLieux){
+            list.add(l.getNomLieu());
+
+        }
+
+        adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnar.setAdapter(adapter);
+        spinnar.setOnItemSelectedListener(this);
+
+
+        // SPINEUR POUR REFERENCE
+        Spinner spinnar2 = (Spinner) findViewById(R.id.spinner_references);
+        ArrayAdapter<String> adapter2;
+        List<String> list2;
+
+        list2 = new ArrayList<String>();
+
+        List<Reference> listReference = ((MyApplication)getApplication()).getStorageService().restoreReference(this);
+        for(Reference l : listReference){
+            list2.add(l.getNomRef());
+        }
+
+        adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, list2);
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnar2.setAdapter(adapter2);
+        spinnar2.setOnItemSelectedListener(this);
+
     }
 
 
@@ -86,5 +132,17 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
                     }, pYear, pMonth, pDay);
             datePickerDialog.show();
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
+
+
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
     }
 }

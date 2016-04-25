@@ -95,6 +95,55 @@
                 android:onClick="selectDateToDisplay"
                 android:src="@drawable/calendar" />
 </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Lieu de stockage"
+                    android:id="@+id/textView_lieuxStockage_addProduit"
+                    android:layout_weight="0.00"
+                    android:layout_gravity="center_horizontal" />
+
+                <Spinner
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_lieuxStockage"
+                    android:layout_gravity="right"
+                     />
+                />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="278dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Reference"
+                    android:id="@+id/textView_references_addProduit"
+                    android:layout_weight="0.00"
+                    android:layout_gravity="center_horizontal" />
+
+                <Spinner
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_references"
+                    android:layout_gravity="right"
+                    />
+                />
+            </LinearLayout>
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabAjoutProduit"
                 android:layout_gravity="center_horizontal"

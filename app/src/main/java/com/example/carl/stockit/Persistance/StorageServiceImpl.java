@@ -2,6 +2,7 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
+import com.example.carl.stockit.AddProduitActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.Data.Reference;
@@ -17,13 +18,19 @@ import java.util.List;
 public class StorageServiceImpl implements StorageService {
     private List<Produit> listeProduit;
     private List<LieuStockage> listeLieux;
+    private List<Reference> listeReference;
 
     public StorageServiceImpl() {
         this.listeProduit = new ArrayList<Produit>();
         this.listeLieux = new ArrayList<LieuStockage>();
+        this.listeReference = new ArrayList<Reference>();
         LieuStockage lieu1 = new LieuStockage(1,"Frigo",30,"Cuisine","","/cuisine");
         LieuStockage lieu2 = new LieuStockage(2,"Armoire",40,"Salon","","/salon");
         LieuStockage lieu3 = new LieuStockage(3,"Four",3,"Cuisine","","/img");
+        Reference ref1 = new Reference( "steak", 123, "categorie", "url");
+        Reference ref2 = new Reference( "pomme", 123, "categorie", "url");
+        this.listeReference.add(ref1);
+        this.listeReference.add(ref2);
         this.listeLieux.add(lieu1);
         this.listeLieux.add(lieu2);
         this.listeLieux.add(lieu3);
@@ -125,5 +132,10 @@ public class StorageServiceImpl implements StorageService {
 
         // il faut ensuite ajouter la ref dans la BD
         // la methode d'appel à la BD doit etre dans reference.java
+    }
+
+    @Override
+    public List<Reference> restoreReference(AddProduitActivity addProduitActivity) {
+        return listeReference;
     }
 }
