@@ -30,6 +30,13 @@
             android:clickable="true"
             android:contextClickable="true" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:id="@+id/textView_capaciteStock"
+            android:layout_weight="0.94" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,15 +74,8 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Reference"
-                android:id="@+id/textView_referenceProduit" />
+                android:id="@+id/textView_LocalisationLieuxStockage" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Medium Text"
-                android:id="@+id/textView2"
-                android:layout_marginLeft="70dp" />
         </LinearLayout>
     </LinearLayout>
 

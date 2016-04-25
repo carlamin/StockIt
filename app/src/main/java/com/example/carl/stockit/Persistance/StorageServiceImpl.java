@@ -2,7 +2,6 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
-import com.example.carl.stockit.AddReferenceActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.Data.Reference;
@@ -106,6 +105,14 @@ public class StorageServiceImpl implements StorageService {
         listeProduit.set(position,p);
     }
 
+    @Override
+    public void addLieuxStockage(Context context, String nomL, int capacite, String localisation) {
+        LieuStockage l = new LieuStockage();
+        l.setNomLieu(nomL);
+        l.setCapacite(capacite);
+        l.setLocalisation(localisation);
+        listeLieux.add(l);
+    }
 
 
     @Override

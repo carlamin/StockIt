@@ -16,7 +16,7 @@ import android.view.SubMenu;
 import android.view.View;
 import android.widget.ListView;
 
-import com.example.carl.stockit.Adapter.ListLieuxStockageAdaper;
+import com.example.carl.stockit.Adapter.ListLieuxStockageAdapter;
 import com.example.carl.stockit.Data.LieuStockage;
 
 import java.util.List;
@@ -24,7 +24,7 @@ import java.util.List;
 public class LieuxStockageActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private ListView listViewLieuxStockage;
-    private ListLieuxStockageAdaper adapter;
+    private ListLieuxStockageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +35,17 @@ public class LieuxStockageActivity extends AppCompatActivity
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fabL = (FloatingActionButton) findViewById(R.id.fabLieuxStockage);
+        fabL.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent addIntent = new Intent(LieuxStockageActivity.this, AddLieuxStockageActivity.class);
-                //startActivity(addIntent);
+                Intent addLIntent = new Intent(LieuxStockageActivity.this, AddLieuxStockageActivity.class);
+                startActivity(addLIntent);
             }
         });
         listViewLieuxStockage = (ListView) findViewById(R.id.content_main_listView_lieux_de_stockage_contents);
-       // adapter = new ListLieuxStockageAdaper(this,R.layout.listview_lieux_stockage);
-       // listViewLieuxStockage.setAdapter(adapter);
+        adapter = new ListLieuxStockageAdapter(this,R.layout.listview_lieux_stockage);
+        listViewLieuxStockage.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -141,8 +141,8 @@ public class LieuxStockageActivity extends AppCompatActivity
         updateAdapter(listLieuxStockge);
     }
     protected void updateAdapter(List<LieuStockage> produitList){
-        //adapter.clear();
-        //adapter.addAll(produitList);
-        //adapter.notifyDataSetChanged();
+        adapter.clear();
+        adapter.addAll(produitList);
+        adapter.notifyDataSetChanged();
     }
 }

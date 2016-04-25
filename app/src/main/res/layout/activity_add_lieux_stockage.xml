@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".AddLieuxStockageActivity">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.19"
+                android:weightSum="1">
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:layout_width="325dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="Ajout Lieu de stockage"
+                    android:id="@+id/textView_AjoutLieuxStockage"
+                    android:textSize="30sp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="0dp"
+                    android:layout_column="0"
+                    android:layout_columnSpan="7"
+                    android:layout_row="0"
+                    android:layout_x="64dp"
+                    android:layout_y="17dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"></android.support.design.widget.TextInputLayout>
+
+                <EditText android:id="@+id/editText_nomLieuStockage"
+                    android:layout_width="278dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textCapWords"
+                    android:hint="Nom Lieu de stockage"
+                    android:layout_x="62dp"
+                    android:layout_y="97dp"
+                    android:layout_gravity="center_horizontal" />
+
+                <EditText
+                    android:layout_width="277dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/editText_CapaciteStock"
+                    android:layout_x="65dp"
+                    android:layout_y="145dp"
+                    android:hint="Capacité maximum"
+                    android:layout_gravity="center" />
+
+                <EditText
+                    android:layout_width="277dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/editText_Localisation"
+                    android:layout_x="65dp"
+                    android:layout_y="145dp"
+                    android:hint="Localisation"
+                    android:layout_gravity="center" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/fabAjoutLieuxStockage"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@android:drawable/ic_input_add"
+                    android:layout_column="5"
+                    android:layout_row="16"
+                    android:layout_width="71dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_alignRight="@+id/textView_AjoutLieuxStockage"
+                    android:layout_alignEnd="@+id/textView_AjoutLieuxStockage"
+                    android:layout_x="230dp"
+                    android:layout_y="328dp"
+
+                    android:background="@android:color/holo_green_dark"
+/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+

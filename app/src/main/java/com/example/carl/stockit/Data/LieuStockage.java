@@ -11,6 +11,10 @@ public class LieuStockage {
     private String autreInfos;
     private String image;
 
+    public LieuStockage() {
+
+    }
+
     public int getId() {
         return id;
     }
