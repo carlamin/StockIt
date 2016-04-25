@@ -20,13 +20,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddProduitActivity" />
+        <activity android:name=".AddReferenceActivity" />
         <activity android:name=".ModifierProduitActivity" />
+        <activity android:name=".ViewReferenceActivity" />
         <activity
             android:name=".LieuxStockageActivity"
             android:label="@string/title_activity_lieu_stockage"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".AddLieuxStockageActivity"/>
-        <activity android:name=".AddReferenceActivity" />
     </application>
 
 </manifest>

@@ -22,8 +22,7 @@ import com.example.carl.stockit.Data.Produit;
 
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private ListView listViewProduits;
     private ListProduitAdapter adapter;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(addIntent);
             }
         });
-listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
+    listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
         adapter = new ListProduitAdapter(this,R.layout.listview_produits);
         listViewProduits.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -52,45 +51,13 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
         //drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        initLeftNav();
+        /* TEST navigateur */
+        InitNav initNav = new InitNav(this);
+        initNav.initleftnav();
+
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(initNav);
 
-    }
-
-    private void initLeftNav(){
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        Menu menu = navigationView.getMenu();
-        List<LieuStockage> lieuxStockages = ((MyApplication)getApplication()).getStorageService().restoreLieuxStockage(this);
-
-        Intent home = new Intent(this,MainActivity.class);
-        menu.getItem(0).setIntent(home);
-
-        final SubMenu subMenuLieuStockage = menu.addSubMenu("Produits");
-
-
-        for (LieuStockage lieuStockage : lieuxStockages) {
-            MenuItem menuItem = subMenuLieuStockage.add(lieuStockage.getNomLieu());
-            menuItem.setIcon(Drawable.createFromPath(lieuStockage.getImage()));
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("id", lieuStockage.getId());
-            menuItem.setIntent(intent);
-        }
-
-        Intent LieuIntent = new Intent(this,LieuxStockageActivity.class);
-        menu.add("Lieux de stockage").setIntent(LieuIntent);
-
-
-
-        final SubMenu subMenu = menu.addSubMenu("Settings");
-
-        MenuItem menuItem = subMenu.add("Ajouter une référence");
-        Intent intent = new Intent(MainActivity.this, AddReferenceActivity.class);
-        intent.putExtra("id",AJOUTREFERENCE);
-        menuItem.setIntent(intent);
-
-
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -127,33 +94,6 @@ listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcon
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-       /* int id = (int) item.getIntent().getSerializableExtra("id");
-
-        // peut être inutile */
-        /*
-       if(id == AJOUTREFERENCE){
-           // LANCER AJOUT REFERENCE
-           Intent addIntent = new Intent(MainActivity.this, AddReferenceActivity.class);
-           startActivity(addIntent);
-
-       }else if(id ==2 ){}else if(id ==3){}
-
-        */
-
-        int id = item.getItemId();
-        Intent intent = item.getIntent();
-        startActivity(intent);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-        finish();
-        return true;
-    }
     protected void onResume() {
         super.onResume();
        List<Produit> listProduit = (List<Produit>) ((MyApplication) getApplication()).getStorageService().restoreProduits(this);
