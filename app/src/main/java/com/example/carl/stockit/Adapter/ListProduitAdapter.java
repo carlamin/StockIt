@@ -16,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.ModifierProduitActivity;
 import com.example.carl.stockit.MyApplication;
@@ -35,7 +34,7 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
     Context context;
     String filter;
 
-    public ListProduitAdapter(Activity activity, Context context, int resource, List<Produit> objects, List<Produit> listProduits, , String filter) {
+    public ListProduitAdapter(Activity activity, Context context, int resource, List<Produit> objects, List<Produit> listProduits, String filter) {
         super(context, resource, objects);
         this.listProduits = listProduits;
         this.context = context;
