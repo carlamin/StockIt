@@ -48,6 +48,9 @@ public interface StorageService {
     public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
     public void addLieuxStockage(Context context,String nomL,int capacite,String localisation);
     void addReference(Context addReferenceActivity, String trim, int i, String trim1, String trim2);
+    public LieuStockage getLieuStockageByName(String name);
 
     List<Reference> restoreReference(AddProduitActivity addProduitActivity);
+
+    void removeLieu(LieuStockage lieuASuppr);
 }

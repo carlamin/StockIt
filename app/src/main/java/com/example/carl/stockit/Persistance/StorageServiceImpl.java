@@ -138,4 +138,19 @@ public class StorageServiceImpl implements StorageService {
     public List<Reference> restoreReference(AddProduitActivity addProduitActivity) {
         return listeReference;
     }
+
+    @Override
+    public void removeLieu(LieuStockage lieuASuppr) {
+        listeLieux.remove(lieuASuppr);
+    }
+
+
+    public LieuStockage getLieuStockageByName(String name){
+        for(LieuStockage l : listeLieux){
+            if(l.getNomLieu()==name){
+                return l;
+            }
+        }
+        return null;
+    }
 }
