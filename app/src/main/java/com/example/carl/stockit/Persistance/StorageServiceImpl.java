@@ -156,4 +156,19 @@ for(LieuStockage l : listeLieux){
     public List<Reference> restoreReference(Context context) {
         return listeReference;
     }
+
+    @Override
+    public void removeLieu(LieuStockage lieuASuppr) {
+        listeLieux.remove(lieuASuppr);
+    }
+
+
+    public LieuStockage getLieuStockageByName(String name){
+        for(LieuStockage l : listeLieux){
+            if(l.getNomLieu()==name){
+                return l;
+            }
+        }
+        return null;
+    }
 }

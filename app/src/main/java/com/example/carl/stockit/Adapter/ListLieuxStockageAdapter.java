@@ -1,6 +1,9 @@
 package com.example.carl.stockit.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -9,7 +12,9 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.carl.stockit.AddProduitActivity;
 import com.example.carl.stockit.Data.LieuStockage;
+import com.example.carl.stockit.MyApplication;
 import com.example.carl.stockit.R;
 
 import java.util.List;
@@ -20,11 +25,13 @@ import java.util.List;
 public class ListLieuxStockageAdapter extends ArrayAdapter<LieuStockage> implements MenuItem.OnMenuItemClickListener{
     private List<LieuStockage> listLieuxStockage;
     Context context;
+    Activity activity;
 
 
 
-    public ListLieuxStockageAdapter(Context context, int resource) {
+    public ListLieuxStockageAdapter(Activity activity, Context context, int resource) {
         super(context, resource);
+        this.activity=activity;
     }
 
 
@@ -37,6 +44,29 @@ public class ListLieuxStockageAdapter extends ArrayAdapter<LieuStockage> impleme
             LayoutInflater vi;
             vi =LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.listview_lieux_stockage, null);
+            final View buttonSuppr = v.findViewById(R.id.imageButton_deleteLieuxStockage);
+            final TextView childAt = (TextView) v.findViewById(R.id.textView_nomLieuxStockage);
+            buttonSuppr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //ViewGroup parent1 = (ViewGroup) buttonSuppr.getParent();
+                    //TextView childAt = (TextView) parent1.getChildAt(1);
+
+                    LieuStockage lieuASuppr = ((MyApplication) activity.getApplication()).getStorageService().getLieuStockageByName((String) childAt.getText());
+
+
+
+                    if ( lieuASuppr != null ){
+                        remove(lieuASuppr);
+                        ((MyApplication) activity.getApplication()).getStorageService().removeLieu(lieuASuppr);
+                    }
+                    else System.out.println("SWAG!");
+
+                }
+
+            });
+
+
         }
 
         final LieuStockage lieuStockage = getItem(position);

@@ -46,30 +46,22 @@ public class LieuxStockageActivity extends AppCompatActivity
             }
         });
         listViewLieuxStockage = (ListView) findViewById(R.id.content_main_listView_lieux_de_stockage_contents);
-        adapter = new ListLieuxStockageAdapter(this,R.layout.listview_lieux_stockage);
+        adapter = new ListLieuxStockageAdapter(this,this,R.layout.listview_lieux_stockage);
         listViewLieuxStockage.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-        //initLeftNav();
+
 
         /*
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         */
 
-        /* BOUTON SUPPR */
-        @SuppressLint("WrongViewCast") FloatingActionButton supprButton =  (FloatingActionButton) findViewById(R.id.imageButton_deleteLieuxStockage);
-        supprButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int indice;
-               // indice =
-               // ((MyApplication) getApplication()).getStorageService().deleteLieuDeStockage(indice);
-            }
-        });
+        /* BOUTON SUPPRIMER */
+
 
     }
 

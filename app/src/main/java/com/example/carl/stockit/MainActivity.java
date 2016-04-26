@@ -26,7 +26,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ListView listViewProduits;
     private ListProduitAdapter adapter;
-    final int AJOUTREFERENCE = 250;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
