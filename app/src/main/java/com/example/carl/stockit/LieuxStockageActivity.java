@@ -18,8 +18,7 @@ import com.example.carl.stockit.Data.LieuStockage;
 
 import java.util.List;
 
-public class LieuxStockageActivity extends AppCompatActivity
-         {
+public class LieuxStockageActivity extends AppCompatActivity {
     private ListView listViewLieuxStockage;
     private ListLieuxStockageAdapter adapter;
 
@@ -43,7 +42,7 @@ public class LieuxStockageActivity extends AppCompatActivity
             }
         });
         listViewLieuxStockage = (ListView) findViewById(R.id.content_main_listView_lieux_de_stockage_contents);
-        adapter = new ListLieuxStockageAdapter(this,this,R.layout.listview_lieux_stockage);
+        adapter = new ListLieuxStockageAdapter(this, this, R.layout.listview_lieux_stockage);
         listViewLieuxStockage.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -51,16 +50,6 @@ public class LieuxStockageActivity extends AppCompatActivity
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
-
-
-        /*
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        */
-
-        /* BOUTON SUPPRIMER */
-
-
     }
 
     @Override
@@ -103,7 +92,8 @@ public class LieuxStockageActivity extends AppCompatActivity
         List<LieuStockage> listLieuxStockge = (List<LieuStockage>) ((MyApplication) getApplication()).getStorageService().restoreLieuxStockage(this);
         updateAdapter(listLieuxStockge);
     }
-    protected void updateAdapter(List<LieuStockage> produitList){
+
+    protected void updateAdapter(List<LieuStockage> produitList) {
         adapter.clear();
         adapter.addAll(produitList);
         adapter.notifyDataSetChanged();

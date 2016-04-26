@@ -52,6 +52,7 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
 
        final Date date = new Date();
 
+
         //final Date finalDateExp = dateExp;
 
 

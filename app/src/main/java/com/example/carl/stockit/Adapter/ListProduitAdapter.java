@@ -1,5 +1,6 @@
 package com.example.carl.stockit.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
@@ -15,8 +16,10 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.ModifierProduitActivity;
+import com.example.carl.stockit.MyApplication;
 import com.example.carl.stockit.R;
 
 import java.text.DateFormat;
@@ -27,19 +30,23 @@ import java.util.List;
  * Created by carl on 02/04/16.
  */
 public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuItem.OnMenuItemClickListener{
+    private final Activity activity;
     private List<Produit> listProduits;
     Context context;
     String filter;
 
-    public ListProduitAdapter(Context context, int resource, List<Produit> objects, List<Produit> listProduits, String filter) {
+    public ListProduitAdapter(Activity activity, Context context, int resource, List<Produit> objects, List<Produit> listProduits, , String filter) {
         super(context, resource, objects);
         this.listProduits = listProduits;
         this.context = context;
         this.filter=filter;
+        this.activity = activity;
+
     }
 
-    public ListProduitAdapter(Context context, int resource,String filter) {
+    public ListProduitAdapter(Activity activity, Context context, int resource,String filter) {
         super(context, resource);
+        this.activity=activity;
         this.filter=filter;
 
     }
@@ -54,6 +61,22 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
             LayoutInflater vi;
             vi =LayoutInflater.from(getContext());
             v = vi.inflate(R.layout.listview_produits, null);
+
+            final View buttonSuppr = v.findViewById(R.id.imageButton_deleteProduit);
+            final TextView childAt = (TextView) v.findViewById(R.id.textView_nomProduit);
+
+            buttonSuppr.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Produit produit = ((MyApplication) activity.getApplication()).getStorageService().getProduitByName((String) childAt.getText());
+                    if (produit != null) {
+                        remove(produit);
+                        ((MyApplication) activity.getApplication()).getStorageService().removeProduit(produit);
+                    }
+                }
+            });
+
+
         }
 
         final Produit p = getItem(position);
