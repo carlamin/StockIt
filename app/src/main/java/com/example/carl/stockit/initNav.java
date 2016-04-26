@@ -28,6 +28,7 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
     public void initleftnav(){
         NavigationView navigationView = (NavigationView) activity.findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
+
         List<LieuStockage> lieuxStockages = ((MyApplication)activity.getApplication()).getStorageService().restoreLieuxStockage(activity);
 
         Intent home = new Intent(activity,MainActivity.class);

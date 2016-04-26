@@ -24,9 +24,6 @@ public class AddLieuxStockageActivity extends AppCompatActivity implements View.
         FloatingActionButton fabAP = (FloatingActionButton) findViewById(R.id.fabAjoutLieuxStockage);
         final EditText editTextLocalisation = (EditText) findViewById(R.id.editText_Localisation);
 
-        InitNav initNav = new InitNav(this);
-        initNav.initleftnav();
-
         fabAP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
