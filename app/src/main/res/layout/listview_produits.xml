@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Medium Text"
-                android:id="@+id/textView2"
+                android:id="@+id/textView_referenceProduit_infoPlus"
                 android:layout_marginLeft="70dp" />
         </LinearLayout>
     </LinearLayout>

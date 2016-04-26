@@ -140,7 +140,13 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
                                     getContext().startActivity(ModifierIntent);
                 }
             });
+            //delete
             final ImageButton imgDeleteProduit = (ImageButton) v.findViewById(R.id.imageButton_deleteProduit);
+
+            TextView txtV_ref = (TextView) v.findViewById(R.id.textView_referenceProduit_infoPlus);
+            if(txtV_ref!=null){
+                txtV_ref.setText(p.getReference().getNomRef());
+            }
 
 
         }
