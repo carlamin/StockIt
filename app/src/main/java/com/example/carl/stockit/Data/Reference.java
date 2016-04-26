@@ -1,9 +1,11 @@
 package com.example.carl.stockit.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by carl on 30/03/16.
  */
-public class Reference {
+public class Reference implements Serializable {
     private String nomRef;
     private int codeBarre;
     private String categorie;

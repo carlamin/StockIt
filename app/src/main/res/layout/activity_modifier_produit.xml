@@ -69,6 +69,7 @@
                 android:layout_y="145dp"
                 android:hint="Quantité"
                 android:layout_gravity="center" />
+
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="277dp"
@@ -95,6 +96,51 @@
                     android:onClick="selectDateToDisplay"
                     android:src="@drawable/calendar" />
             </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="281dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Lieu de stockage"
+                    android:id="@+id/textView"
+                    android:layout_weight="0.00"
+                    android:layout_gravity="center_horizontal" />
+
+                <Spinner
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner_modifierLieuProduit"
+                    android:layout_marginLeft="60dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Reference"
+                    android:id="@+id/textView2"
+                    android:layout_weight="0.00"
+                    android:layout_gravity="center_horizontal" />
+
+                <Spinner
+                    android:layout_width="126dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner2_modifierRefProduit"
+                    android:layout_marginLeft="80dp" />
+            </LinearLayout>
+
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fabModifierProduit"
                 android:layout_gravity="center_horizontal"

@@ -131,23 +131,29 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
                 }
             });
 
-            v.findViewById(R.id.imageButton_settings_produit).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                                    Intent ModifierIntent = new Intent(getContext(), ModifierProduitActivity.class);
-                                    ModifierIntent.putExtra("produit", p);
-                                    ModifierIntent.putExtra("position",position);
-                                    getContext().startActivity(ModifierIntent);
-                }
-            });
+
             //delete
             final ImageButton imgDeleteProduit = (ImageButton) v.findViewById(R.id.imageButton_deleteProduit);
 
             TextView txtV_ref = (TextView) v.findViewById(R.id.textView_referenceProduit_infoPlus);
             if(txtV_ref!=null){
+
                 txtV_ref.setText(p.getReference().getNomRef());
             }
 
+            TextView txtV_lieu = (TextView) v.findViewById(R.id.textView_lieuStockagePrdouit_infoPlus);
+            if(txtV_lieu!=null){
+                txtV_lieu.setText(p.getLieuStockage().getNomLieu());
+            }
+            v.findViewById(R.id.imageButton_settings_produit).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent ModifierIntent = new Intent(getContext(), ModifierProduitActivity.class);
+                    ModifierIntent.putExtra("produit", p);
+                    ModifierIntent.putExtra("position",position);
+                    getContext().startActivity(ModifierIntent);
+                }
+            });
 
         }
 

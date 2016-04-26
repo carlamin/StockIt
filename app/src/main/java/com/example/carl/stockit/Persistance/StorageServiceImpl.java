@@ -2,7 +2,6 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
-import com.example.carl.stockit.AddProduitActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.Data.Reference;
@@ -82,7 +81,7 @@ public class StorageServiceImpl implements StorageService {
         return listeLieux;
     }
 
-    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth , int pYear) {
+    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth , int pYear,String nomLieu , String nomRef) {
         Produit p = new Produit();
         p.setNom(nomP);
         p.setQuantite(qtite);
@@ -93,12 +92,21 @@ public class StorageServiceImpl implements StorageService {
         Date date = cal.getTime();
 
         p.setDateExpiration(date);
-
+for(LieuStockage l : listeLieux){
+    if(l.getNomLieu().equals(nomLieu)){
+        p.setLieuStockage(l);
+    }
+}
+        for(Reference r : listeReference){
+            if (r.getNomRef().equals(nomRef)){
+                p.setReference(r);
+            }
+        }
         listeProduit.add(p);
     }
 
     @Override
-    public void modifierProduit(Context context, int position, String nomP, int qtite, int pDay, int pMonth, int pYear) {
+    public void modifierProduit(Context context, int position, String nomP, int qtite, int pDay, int pMonth, int pYear,String nomLieu , String nomRef) {
         Produit p = new Produit();
         p.setNom(nomP);
         p.setQuantite(qtite);
@@ -109,6 +117,16 @@ public class StorageServiceImpl implements StorageService {
         Date date = cal.getTime();
 
         p.setDateExpiration(date);
+        for(LieuStockage l : listeLieux){
+            if(l.getNomLieu().equals(nomLieu)){
+                p.setLieuStockage(l);
+            }
+        }
+        for(Reference r : listeReference){
+            if (r.getNomRef().equals(nomRef)){
+                p.setReference(r);
+            }
+        }
         listeProduit.set(position,p);
     }
 
@@ -135,7 +153,7 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public List<Reference> restoreReference(AddProduitActivity addProduitActivity) {
+    public List<Reference> restoreReference(Context context) {
         return listeReference;
     }
 }

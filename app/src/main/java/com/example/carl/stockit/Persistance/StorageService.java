@@ -2,7 +2,6 @@ package com.example.carl.stockit.Persistance;
 
 import android.content.Context;
 
-import com.example.carl.stockit.AddProduitActivity;
 import com.example.carl.stockit.Data.LieuStockage;
 import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.Data.Reference;
@@ -43,11 +42,11 @@ public interface StorageService {
      * Enregistre un nouvel article passé en paramètre.
      * @param context contexte de l'activité
      */
-    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear);
+    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth,int pYear,String nomLieu , String nomRef);
 
-    public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear);
+    public void modifierProduit(Context context,int position, String nomP,int qtite,int pDay,int pMonth,int pYear,String nomLieu , String nomRef);
     public void addLieuxStockage(Context context,String nomL,int capacite,String localisation);
-    void addReference(Context addReferenceActivity, String trim, int i, String trim1, String trim2);
+    void addReference(Context context, String trim, int i, String trim1, String trim2);
 
-    List<Reference> restoreReference(AddProduitActivity addProduitActivity);
+    List<Reference> restoreReference(Context context);
 }

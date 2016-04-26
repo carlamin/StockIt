@@ -53,22 +53,10 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
        final Date date = new Date();
 
         //final Date finalDateExp = dateExp;
-        fabAP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (editTextNomProduit.getText().toString().trim().isEmpty()&&editTextQtiteProduit.getText().toString().trim().isEmpty()&&txtDate.getText().toString().trim().isEmpty()) {
-                    Toast.makeText(AddProduitActivity.this, R.string.mandatory_message, Toast.LENGTH_LONG).show();
-                } else {
-                    ((MyApplication) getApplication()).getStorageService().addProduit(AddProduitActivity.this, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduit.getText().toString()),pDay,pMonth,pYear);
-                    AddProduitActivity.this.finish();
-                }
-
-            }
-        });
 
 
         // SPINNER POUR LIEUX DE STOCKAGE
-        Spinner spinnar = (Spinner) findViewById(R.id.spinner_lieuxStockage);
+        final Spinner spinnar = (Spinner) findViewById(R.id.spinner_lieuxStockage);
         ArrayAdapter<String> adapter;
         List<String> list;
 
@@ -87,7 +75,7 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
 
 
         // SPINEUR POUR REFERENCE
-        Spinner spinnar2 = (Spinner) findViewById(R.id.spinner_references);
+        final Spinner spinnar2 = (Spinner) findViewById(R.id.spinner_references);
         ArrayAdapter<String> adapter2;
         List<String> list2;
 
@@ -102,6 +90,20 @@ public class AddProduitActivity extends AppCompatActivity implements View.OnClic
         adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnar2.setAdapter(adapter2);
         spinnar2.setOnItemSelectedListener(this);
+
+        fabAP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (editTextNomProduit.getText().toString().trim().isEmpty()&&editTextQtiteProduit.getText().toString().trim().isEmpty()&&txtDate.getText().toString().trim().isEmpty()) {
+                    Toast.makeText(AddProduitActivity.this, R.string.mandatory_message, Toast.LENGTH_LONG).show();
+                } else {
+                    ((MyApplication) getApplication()).getStorageService().addProduit(AddProduitActivity.this, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduit.getText().toString()),pDay,pMonth,pYear,spinnar.getSelectedItem().toString().trim(),spinnar2.getSelectedItem().toString().trim());
+                    AddProduitActivity.this.finish();
+                }
+
+            }
+        });
+
 
     }
 

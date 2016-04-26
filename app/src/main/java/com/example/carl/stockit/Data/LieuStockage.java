@@ -1,9 +1,11 @@
 package com.example.carl.stockit.Data;
 
+import java.io.Serializable;
+
 /**
  * Created by carl on 30/03/16.
  */
-public class LieuStockage {
+public class LieuStockage implements Serializable {
     private int id;
     private String nomLieu;
     private int capacite;
