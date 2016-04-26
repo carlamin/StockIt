@@ -28,10 +28,15 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
     public void initleftnav(){
         NavigationView navigationView = (NavigationView) activity.findViewById(R.id.nav_view);
         Menu menu = navigationView.getMenu();
+        MenuItem home = menu.add("Home");
+        home.setIcon(R.drawable.ic_nav_home);
+
         List<LieuStockage> lieuxStockages = ((MyApplication)activity.getApplication()).getStorageService().restoreLieuxStockage(activity);
 
-        Intent home = new Intent(activity,MainActivity.class);
-        menu.getItem(0).setIntent(home);
+
+        Intent homeIntent = new Intent(activity, MainActivity.class);
+        homeIntent.putExtra("filter","All");
+        home.setIntent(homeIntent);
 
         final SubMenu subMenuLieuStockage = menu.addSubMenu("Produits");
 
@@ -40,7 +45,8 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
             MenuItem menuItem = subMenuLieuStockage.add(lieuStockage.getNomLieu());
             menuItem.setIcon(Drawable.createFromPath(lieuStockage.getImage()));
             Intent intent = new Intent(activity, MainActivity.class);
-            intent.putExtra("id", lieuStockage.getId());
+            //intent.putExtra("id", lieuStockage.getId());
+            intent.putExtra("filter",lieuStockage.getNomLieu());
             menuItem.setIntent(intent);
         }
 
@@ -60,6 +66,7 @@ public class InitNav implements NavigationView.OnNavigationItemSelectedListener 
         menuItem.setIntent(intent);
 
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
 

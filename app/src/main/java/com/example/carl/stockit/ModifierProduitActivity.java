@@ -108,6 +108,7 @@ final int position = (int) getIntent().getSerializableExtra("position");
                 } else {
                     ((MyApplication) getApplication()).getStorageService().modifierProduit(ModifierProduitActivity.this,position, editTextNomProduit.getText().toString().trim(),Integer.parseInt( editTextQtiteProduitM.getText().toString()),pDay,pMonth,pYear,spinnar.getSelectedItem().toString().trim(),spinnar2.getSelectedItem().toString().trim());
                     ModifierProduitActivity.this.finish();
+
                 }
             }
         });

@@ -1,11 +1,8 @@
 package com.example.carl.stockit;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.SubMenu;
 import android.view.View;
 import android.widget.ListView;
 
@@ -34,7 +30,7 @@ public class LieuxStockageActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        InitNav initNav = new InitNav(LieuxStockageActivity.this);
+        final InitNav initNav = new InitNav(LieuxStockageActivity.this);
         initNav.initleftnav();
 
         FloatingActionButton fabL = (FloatingActionButton) findViewById(R.id.fabLieuxStockage);
@@ -43,11 +39,13 @@ public class LieuxStockageActivity extends AppCompatActivity
             public void onClick(View view) {
                 Intent addLIntent = new Intent(LieuxStockageActivity.this, AddLieuxStockageActivity.class);
                 startActivity(addLIntent);
+
             }
         });
         listViewLieuxStockage = (ListView) findViewById(R.id.content_main_listView_lieux_de_stockage_contents);
         adapter = new ListLieuxStockageAdapter(this,this,R.layout.listview_lieux_stockage);
         listViewLieuxStockage.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

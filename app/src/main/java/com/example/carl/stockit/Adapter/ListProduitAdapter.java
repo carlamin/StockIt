@@ -29,15 +29,19 @@ import java.util.List;
 public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuItem.OnMenuItemClickListener{
     private List<Produit> listProduits;
     Context context;
+    String filter;
 
-    public ListProduitAdapter(Context context, int resource, List<Produit> objects, List<Produit> listProduits, Context context1) {
+    public ListProduitAdapter(Context context, int resource, List<Produit> objects, List<Produit> listProduits, String filter) {
         super(context, resource, objects);
         this.listProduits = listProduits;
-        context = context1;
+        this.context = context;
+        this.filter=filter;
     }
 
-    public ListProduitAdapter(Context context, int resource) {
+    public ListProduitAdapter(Context context, int resource,String filter) {
         super(context, resource);
+        this.filter=filter;
+
     }
 
 
@@ -55,6 +59,14 @@ public class ListProduitAdapter extends ArrayAdapter<Produit> implements MenuIte
         final Produit p = getItem(position);
 
         if (p != null) {
+            System.out.println(filter);
+            if(!p.getLieuStockage().getNomLieu().equals(filter)){
+               v.findViewById(R.id.layout_listAdapter).setVisibility(View.GONE);
+                v.setVisibility(View.GONE);
+            }
+            if(filter==null || filter.equals("All")){
+                v.setVisibility(View.VISIBLE);
+            }
             TextView textView_nomP = (TextView) v.findViewById(R.id.textView_nomProduit);
             final EditText editText_qtiteP = (EditText) v.findViewById(R.id.editText_stockProduit);
 

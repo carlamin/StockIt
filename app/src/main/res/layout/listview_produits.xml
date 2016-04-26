@@ -5,7 +5,8 @@
     android:weightSum="1"
     android:contextClickable="true"
     android:clickable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/layout_listAdapter">
 
 
     <LinearLayout
