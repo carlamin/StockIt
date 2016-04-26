@@ -1,5 +1,6 @@
 package com.example.carl.stockit;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -22,7 +23,7 @@ import com.example.carl.stockit.Data.LieuStockage;
 import java.util.List;
 
 public class LieuxStockageActivity extends AppCompatActivity
-         { //implements NavigationView.OnNavigationItemSelectedListener
+         {
     private ListView listViewLieuxStockage;
     private ListLieuxStockageAdapter adapter;
 
@@ -58,40 +59,20 @@ public class LieuxStockageActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         */
+
+        /* BOUTON SUPPR */
+        @SuppressLint("WrongViewCast") FloatingActionButton supprButton =  (FloatingActionButton) findViewById(R.id.imageButton_deleteLieuxStockage);
+        supprButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int indice;
+               // indice =
+               // ((MyApplication) getApplication()).getStorageService().deleteLieuDeStockage(indice);
+            }
+        });
+
     }
 
-    /*
-    private void initLeftNav(){
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        Menu menu = navigationView.getMenu();
-        List<LieuStockage> lieuxStockages = ((MyApplication)getApplication()).getStorageService().restoreLieuxStockage(this);
-
-        Intent home = new Intent(this,MainActivity.class);
-        menu.getItem(0).setIntent(home);
-        final SubMenu subMenuLieuStockage = menu.addSubMenu("Produits");
-
-
-        for (LieuStockage lieuStockage : lieuxStockages) {
-            MenuItem menuItem = subMenuLieuStockage.add(lieuStockage.getNomLieu());
-            menuItem.setIcon(Drawable.createFromPath(lieuStockage.getImage()));
-            Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("id", lieuStockage.getId());
-            menuItem.setIntent(intent);
-        }
-
-        Intent LieuIntent = new Intent(this,LieuxStockageActivity.class);
-        menu.add("Lieux de stockage").setIntent(LieuIntent);
-
-
-
-        final SubMenu subMenu = menu.addSubMenu("Settings");
-        for (int i = 0; i < 2; i++) {
-            subMenu.add("SubMenu Item " + (i + 1));
-        }
-
-        navigationView.setNavigationItemSelectedListener(this);
-    }
-    */
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -125,23 +106,6 @@ public class LieuxStockageActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
-    /*
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Intent intent = item.getIntent();
-        startActivity(intent);
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-
-        finish();
-        return true;
-    }
-    */
 
 
     protected void onResume() {
