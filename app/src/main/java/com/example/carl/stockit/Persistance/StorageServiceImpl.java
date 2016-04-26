@@ -9,6 +9,7 @@ import com.example.carl.stockit.Data.Reference;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -160,6 +161,12 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public void removeLieu(LieuStockage lieuASuppr) {
         listeLieux.remove(lieuASuppr);
+        Iterator<Produit> iterator = listeProduit.iterator();
+        while (iterator.hasNext()){
+            if (iterator.next().getLieuStockage().equals(lieuASuppr)){
+                iterator.remove();
+            }
+        }
     }
 
     @Override

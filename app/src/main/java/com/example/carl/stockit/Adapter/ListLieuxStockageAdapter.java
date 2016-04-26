@@ -2,8 +2,6 @@ package com.example.carl.stockit.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,8 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.carl.stockit.AddProduitActivity;
 import com.example.carl.stockit.Data.LieuStockage;
+import com.example.carl.stockit.Data.Produit;
 import com.example.carl.stockit.MyApplication;
 import com.example.carl.stockit.R;
 
@@ -52,6 +50,8 @@ public class ListLieuxStockageAdapter extends ArrayAdapter<LieuStockage> impleme
                     if (lieuASuppr != null) {
                         remove(lieuASuppr);
                         ((MyApplication) activity.getApplication()).getStorageService().removeLieu(lieuASuppr);
+                        List<Produit> listP = ((MyApplication)activity.getApplication()).getStorageService().restoreProduits(context);
+
                     }
                 }
             });
