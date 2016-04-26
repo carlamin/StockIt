@@ -53,4 +53,11 @@ public interface StorageService {
     List<Reference> restoreReference(Context context);
     void removeLieu(LieuStockage lieuASuppr);
 
+    Produit getProduitByName(String text);
+
+    void removeProduit(Produit produit);
+
+    Reference getReferenceByName(String text);
+
+    void removeReference(Reference reference);
 }

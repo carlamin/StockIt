@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     listViewProduits = (ListView) findViewById(R.id.content_main_listView_produitcontents);
-        adapter = new ListProduitAdapter(this,R.layout.listview_produits);
+        adapter = new ListProduitAdapter(this,this,R.layout.listview_produits);
         listViewProduits.setAdapter(adapter);
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

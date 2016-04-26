@@ -91,20 +91,12 @@
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fabAjoutReference"
-            android:layout_width="103dp"
-            android:layout_height="88dp"
-            android:layout_alignEnd="@+id/textView_AjoutProduit"
-            android:layout_alignRight="@+id/textView_AjoutProduit"
-            android:layout_centerVertical="true"
-            android:layout_column="5"
-            android:layout_gravity="center_horizontal"
-            android:layout_row="16"
-            android:layout_x="190dp"
-            android:layout_y="331dp"
-            android:adjustViewBounds="true"
-            android:background="@android:color/holo_blue_bright"
-            android:src="@android:drawable/ic_input_add"
-            app:backgroundTint="@android:color/holo_green_dark" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            android:src="@android:drawable/ic_input_add" />
+
 
     </android.support.design.widget.CoordinatorLayout>
     <android.support.design.widget.NavigationView

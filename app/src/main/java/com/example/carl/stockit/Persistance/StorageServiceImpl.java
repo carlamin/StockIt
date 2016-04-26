@@ -23,11 +23,11 @@ public class StorageServiceImpl implements StorageService {
         this.listeProduit = new ArrayList<Produit>();
         this.listeLieux = new ArrayList<LieuStockage>();
         this.listeReference = new ArrayList<Reference>();
-        LieuStockage lieu1 = new LieuStockage(1,"Frigo",30,"Cuisine","","/cuisine");
-        LieuStockage lieu2 = new LieuStockage(2,"Armoire",40,"Salon","","/salon");
-        LieuStockage lieu3 = new LieuStockage(3,"Four",3,"Cuisine","","/img");
-        Reference ref1 = new Reference( "steak", 123, "categorie", "url");
-        Reference ref2 = new Reference( "pomme", 123, "categorie", "url");
+        LieuStockage lieu1 = new LieuStockage(1, "Frigo", 30, "Cuisine", "", "/cuisine");
+        LieuStockage lieu2 = new LieuStockage(2, "Armoire", 40, "Salon", "", "/salon");
+        LieuStockage lieu3 = new LieuStockage(3, "Four", 3, "Cuisine", "", "/img");
+        Reference ref1 = new Reference("steak", 123, "categorie", "url");
+        Reference ref2 = new Reference("pomme", 123, "categorie", "url");
         this.listeReference.add(ref1);
         this.listeReference.add(ref2);
         this.listeLieux.add(lieu1);
@@ -35,7 +35,7 @@ public class StorageServiceImpl implements StorageService {
         this.listeLieux.add(lieu3);
     }
 
-    public  void init(){
+    public void init() {
         //this.listeProduit = ;
         //this.listeLieux = ;
 
@@ -52,20 +52,20 @@ public class StorageServiceImpl implements StorageService {
     @Override
     public List<LieuStockage> storeLieuStockage(Context context, List<LieuStockage> listeLieux) {
         clearProduit(context);
-        this.listeLieux= listeLieux;
+        this.listeLieux = listeLieux;
         return restoreLieuxStockage(context);
     }
 
     @Override
     public List<Produit> restoreProduits(Context context) {
 
-        return  listeProduit;
+        return listeProduit;
 
     }
 
     @Override
     public List<LieuStockage> restoreLieuxStockage(Context context) {
-        return  listeLieux;
+        return listeLieux;
 
     }
 
@@ -81,24 +81,24 @@ public class StorageServiceImpl implements StorageService {
         return listeLieux;
     }
 
-    public void addProduit(Context context, String nomP,int qtite,int pDay,int pMonth , int pYear,String nomLieu , String nomRef) {
+    public void addProduit(Context context, String nomP, int qtite, int pDay, int pMonth, int pYear, String nomLieu, String nomRef) {
         Produit p = new Produit();
         p.setNom(nomP);
         p.setQuantite(qtite);
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DAY_OF_MONTH,pDay);
-        cal.set(Calendar.MONTH,pMonth);
-        cal.set(Calendar.YEAR,pYear);
+        cal.set(Calendar.DAY_OF_MONTH, pDay);
+        cal.set(Calendar.MONTH, pMonth);
+        cal.set(Calendar.YEAR, pYear);
         Date date = cal.getTime();
 
         p.setDateExpiration(date);
-for(LieuStockage l : listeLieux){
-    if(l.getNomLieu().equals(nomLieu)){
-        p.setLieuStockage(l);
-    }
-}
-        for(Reference r : listeReference){
-            if (r.getNomRef().equals(nomRef)){
+        for (LieuStockage l : listeLieux) {
+            if (l.getNomLieu().equals(nomLieu)) {
+                p.setLieuStockage(l);
+            }
+        }
+        for (Reference r : listeReference) {
+            if (r.getNomRef().equals(nomRef)) {
                 p.setReference(r);
             }
         }
@@ -106,28 +106,28 @@ for(LieuStockage l : listeLieux){
     }
 
     @Override
-    public void modifierProduit(Context context, int position, String nomP, int qtite, int pDay, int pMonth, int pYear,String nomLieu , String nomRef) {
+    public void modifierProduit(Context context, int position, String nomP, int qtite, int pDay, int pMonth, int pYear, String nomLieu, String nomRef) {
         Produit p = new Produit();
         p.setNom(nomP);
         p.setQuantite(qtite);
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.DAY_OF_MONTH,pDay);
-        cal.set(Calendar.MONTH,pMonth);
-        cal.set(Calendar.YEAR,pYear);
+        cal.set(Calendar.DAY_OF_MONTH, pDay);
+        cal.set(Calendar.MONTH, pMonth);
+        cal.set(Calendar.YEAR, pYear);
         Date date = cal.getTime();
 
         p.setDateExpiration(date);
-        for(LieuStockage l : listeLieux){
-            if(l.getNomLieu().equals(nomLieu)){
+        for (LieuStockage l : listeLieux) {
+            if (l.getNomLieu().equals(nomLieu)) {
                 p.setLieuStockage(l);
             }
         }
-        for(Reference r : listeReference){
-            if (r.getNomRef().equals(nomRef)){
+        for (Reference r : listeReference) {
+            if (r.getNomRef().equals(nomRef)) {
                 p.setReference(r);
             }
         }
-        listeProduit.set(position,p);
+        listeProduit.set(position, p);
     }
 
     @Override
@@ -147,7 +147,7 @@ for(LieuStockage l : listeLieux){
         reference.setCodeBarre(codeBarre);
         reference.setNomRef(nomReference);
         reference.setURLPhoto(urlPhoto);
-
+        listeReference.add(reference);
         // il faut ensuite ajouter la ref dans la BD
         // la methode d'appel à la BD doit etre dans reference.java
     }
@@ -162,12 +162,41 @@ for(LieuStockage l : listeLieux){
         listeLieux.remove(lieuASuppr);
     }
 
-
-    public LieuStockage getLieuStockageByName(String name){
-        for(LieuStockage l : listeLieux){
-            if(l.getNomLieu()==name){
-                return l;
+    @Override
+    public Produit getProduitByName(String name) {
+        for (Produit p : listeProduit) {
+            if (p.getNom() == name) {
+                return p;
             }
+        }
+        return null;
+    }
+
+    @Override
+    public void removeProduit(Produit produit) {
+        listeProduit.remove(produit);
+    }
+
+    @Override
+    public Reference getReferenceByName(String name) {
+        for (Reference r : listeReference) {
+            if (r.getNomRef() == name) {
+                return r;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void removeReference(Reference reference) {
+        listeReference.remove(reference);
+    }
+
+
+    public LieuStockage getLieuStockageByName(String name) {
+        for (LieuStockage l : listeLieux) {
+            if (l.getNomLieu() == name)
+                return l;
         }
         return null;
     }
